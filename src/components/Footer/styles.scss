@@ -1,0 +1,15 @@
+@import "../../styles/abstracts/variables";
+
+.footer {
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 7vh;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: $header-grey;
+}
