@@ -2,15 +2,20 @@
 
 .header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 7vh;
   padding: 0 20rem;
   background-color: $header-grey;
 
-  &__container {
-    width: 100%;
+  &__menu {
+    flex: 1 1 auto;
+  }
+  &__account {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1 1 auto;
   }
   &__links {
     display: flex;
