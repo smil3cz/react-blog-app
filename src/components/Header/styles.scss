@@ -1,0 +1,51 @@
+@import "../../styles/abstracts/variables";
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 7vh;
+  padding: 0 20rem;
+  background-color: $header-grey;
+
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__links {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+  }
+  &__link-item:not(:last-child) {
+    margin-right: 4rem;
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      cursor: pointer;
+      color: $text-primary;
+      text-decoration: none;
+      font-size: 1.6rem;
+    }
+    &:hover {
+      color: $text-secondary;
+      transition: all 0.2s;
+    }
+    &:active {
+      color: $text-secondary;
+    }
+  }
+  &__login {
+    &:link,
+    &:visited {
+      color: $btn-primary;
+      font-size: 1.6rem;
+      text-decoration: none;
+    }
+    &:hover {
+      color: $text-secondary;
+    }
+  }
+}
