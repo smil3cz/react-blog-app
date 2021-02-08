@@ -27,7 +27,9 @@ class App extends React.Component {
     return (
       <Fragment>
         <Header headerAccount={<HeaderAccount />} />
-        <LoginForm />
+        <main className="main">
+          <LoginForm />
+        </main>
         <Footer />
       </Fragment>
     );

@@ -12,4 +12,12 @@
   left: 0;
   width: 100%;
   background-color: $header-grey;
+
+  &__container {
+    max-width: 115.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
