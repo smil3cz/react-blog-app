@@ -1,4 +1,4 @@
-const Header = () => {
+const Header = ({ headerAccount }) => {
   let userIsLogged = false;
   return (
     <header className="header">
@@ -28,7 +28,7 @@ const Header = () => {
               Log in<span>&rarr;</span>
             </a>
           ) : (
-            "User is logged"
+            headerAccount
           )}
         </div>
       </div>
