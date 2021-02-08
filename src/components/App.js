@@ -3,11 +3,11 @@ import "./App.scss";
 import Header from "./Header/Header";
 import HeaderAccount from "./HeaderAccount/HeaderAccount";
 import Footer from "./Footer/Footer";
-import LoginForm from "./LoginForm/LoginForm";
+import UserForm from "./UserForm/UserForm";
 import "./Header/styles.scss";
 import "./HeaderAccount/styles.scss";
 import "./Footer/styles.scss";
-import "./LoginForm/styles.scss";
+import "./UserForm/styles.scss";
 
 class App extends React.Component {
   state = {
@@ -28,7 +28,7 @@ class App extends React.Component {
       <Fragment>
         <Header headerAccount={<HeaderAccount />} />
         <main className="main">
-          <LoginForm />
+          <UserForm />
         </main>
         <Footer />
       </Fragment>

@@ -1,0 +1,92 @@
+@import "../../styles/abstracts/variables";
+
+.form {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  width: 40%;
+  height: 30%;
+  max-width: 40rem;
+  box-shadow: $modal-shadow;
+  border-radius: $border-r-8px;
+  overflow: hidden;
+
+  &__type {
+    height: 5rem;
+    display: flex;
+
+    a {
+      text-decoration: none;
+      font-size: 1.6rem;
+      color: $text-white;
+    }
+
+    &-login {
+      flex: 1 1 50%;
+      background-color: $btn-primary;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-register {
+      flex: 1 1 50%;
+      background-color: $btn-secondary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  label {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+
+  input {
+    font-family: inherit;
+    height: 3.6rem;
+    padding: 1rem 1.5rem;
+    border-radius: $border-r-4px;
+    border: $border-form-inputs;
+  }
+
+  &__login,
+  &__register {
+    padding-top: 4rem;
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    & > * {
+      margin-top: 1rem;
+    }
+  }
+
+  &__login {
+    opacity: 1;
+  }
+
+  &__register {
+    margin-top: -25rem;
+    opacity: 0;
+  }
+
+  button {
+    cursor: pointer;
+    border-radius: $border-r-4px;
+    border: $border-btn-primary;
+    color: $text-white;
+    padding: 0.6rem 1.2rem;
+    background-color: $btn-primary;
+    width: 50%;
+    margin-top: 2rem;
+    align-self: center;
+
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
+}
