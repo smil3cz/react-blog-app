@@ -10,16 +10,16 @@ const UserForm = () => {
         </div>
       </div>
       <form className="form__login">
-        <label htmlFor="username">User Name</label>
+        <label htmlFor="username--login">User Name</label>
         <input
-          id="username"
+          id="username--login"
           className="form__login-username"
           placeholder="username"
           required
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password--login">Password</label>
         <input
-          id="password"
+          id="password--login"
           className="form__login-password"
           placeholder="password"
           type="password"
@@ -28,17 +28,17 @@ const UserForm = () => {
         <button type="submit">Log In</button>
       </form>
       <form className="form__register">
-        <label htmlFor="username">User Name</label>
+        <label htmlFor="username__register">User Name</label>
         <input
-          id="username"
-          className="form__login-username"
+          id="username--register"
+          className="form__username--register"
           placeholder="username"
           required
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password--register">Password</label>
         <input
-          id="password"
-          className="form__login-password"
+          id="password--register"
+          className="form__password--register"
           placeholder="password"
           type="password"
           required

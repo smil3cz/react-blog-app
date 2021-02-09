@@ -4,6 +4,7 @@ import Header from "./Header/Header";
 import HeaderAccount from "./HeaderAccount/HeaderAccount";
 import Footer from "./Footer/Footer";
 import UserForm from "./UserForm/UserForm";
+import registerUser from "../api/apiHelper";
 import "./Header/styles.scss";
 import "./HeaderAccount/styles.scss";
 import "./Footer/styles.scss";
@@ -22,6 +23,11 @@ class App extends React.Component {
       accessToken: "",
     },
   };
+
+  componentDidMount() {
+    const data = registerUser("jan", "1234");
+    console.log(data);
+  }
 
   render() {
     return (
