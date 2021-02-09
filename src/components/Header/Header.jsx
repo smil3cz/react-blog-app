@@ -1,5 +1,10 @@
-const Header = ({ headerAccount }) => {
-  let userIsLogged = true;
+import HeaderAccount from "../HeaderAccount/HeaderAccount";
+
+const Header = ({ userData, displayForm }) => {
+  const handleForm = (event) => {
+    event.preventDefault();
+    displayForm();
+  };
   return (
     <header className="header">
       <div className="header__container">
@@ -23,12 +28,16 @@ const Header = ({ headerAccount }) => {
           </ul>
         </div>
         <div className="header__account">
-          {!userIsLogged ? (
-            <a href="#" className="header__login">
-              Log in<span>&rarr;</span>
+          {!userData.isLogged ? (
+            <a
+              href="#"
+              className="header__login"
+              onClick={(event) => handleForm(event)}
+            >
+              Log in/Register<span>&rarr;</span>
             </a>
           ) : (
-            headerAccount
+            <HeaderAccount />
           )}
         </div>
       </div>

@@ -1,4 +1,8 @@
-const UserForm = () => {
+const UserForm = ({ isOpen }) => {
+  let typeOfForm = "login";
+  if (isOpen) {
+    document.querySelector(".form").classList.add("form--open");
+  }
   return (
     <div className="form">
       <div className="form__type">
@@ -9,41 +13,15 @@ const UserForm = () => {
           <a href="#">Register</a>
         </div>
       </div>
-      <form className="form__login">
-        <label htmlFor="username--login">User Name</label>
-        <input
-          id="username--login"
-          className="form__login-username"
-          placeholder="username"
-          required
-        />
-        <label htmlFor="password--login">Password</label>
-        <input
-          id="password--login"
-          className="form__login-password"
-          placeholder="password"
-          type="password"
-          required
-        />
+      <form className="form__container">
+        <h3 className="form__heading">
+          {typeOfForm === "login" ? "Log In" : "Register"}
+        </h3>
+        <label htmlFor="userId">Username</label>
+        <input className="username" id="userId" type="text" required />
+        <label htmlFor="passId">Password</label>
+        <input className="password" id="passId" type="password" required />
         <button type="submit">Log In</button>
-      </form>
-      <form className="form__register">
-        <label htmlFor="username__register">User Name</label>
-        <input
-          id="username--register"
-          className="form__username--register"
-          placeholder="username"
-          required
-        />
-        <label htmlFor="password--register">Password</label>
-        <input
-          id="password--register"
-          className="form__password--register"
-          placeholder="password"
-          type="password"
-          required
-        />
-        <button type="submit">Register</button>
       </form>
     </div>
   );

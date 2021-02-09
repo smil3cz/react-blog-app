@@ -1,6 +1,7 @@
 @import "../../styles/abstracts/variables";
 
 .form {
+  display: none;
   position: absolute;
   top: 50%;
   right: 50%;
@@ -11,6 +12,10 @@
   box-shadow: $modal-shadow;
   border-radius: $border-r-8px;
   overflow: hidden;
+
+  &--open {
+    display: block;
+  }
 
   &__type {
     height: 5rem;
@@ -45,48 +50,30 @@
   }
 
   input {
-    font-family: inherit;
     height: 3.6rem;
-    padding: 1rem 1.5rem;
-    border-radius: $border-r-4px;
+    padding: 1rem 2rem;
     border: $border-form-inputs;
-  }
-
-  &__login,
-  &__register {
-    padding-top: 4rem;
-    width: 70%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    & > * {
-      margin-top: 1rem;
-    }
-  }
-
-  &__login {
-    opacity: 1;
-  }
-
-  &__register {
-    margin-top: -25rem;
-    opacity: 0;
+    color: $text-secondary;
   }
 
   button {
-    cursor: pointer;
-    border-radius: $border-r-4px;
+    align-self: flex-end;
+    padding: 1rem 2rem;
+    width: 25%;
     border: $border-btn-primary;
-    color: $text-white;
-    padding: 0.6rem 1.2rem;
+    border-radius: $border-r-4px;
     background-color: $btn-primary;
-    width: 50%;
-    margin-top: 2rem;
-    align-self: center;
+    color: $text-white;
+  }
 
-    &:hover {
-      filter: brightness(1.2);
+  &__container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+      margin-top: 2rem;
     }
   }
 }
