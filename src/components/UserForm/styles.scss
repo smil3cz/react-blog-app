@@ -1,0 +1,82 @@
+@import "../../styles/abstracts/variables";
+
+.form {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  width: 40%;
+  height: 30%;
+  max-width: 40rem;
+  box-shadow: $modal-shadow;
+  border-radius: $border-r-8px;
+  overflow: hidden;
+
+  &--open {
+    display: block;
+  }
+
+  &__type {
+    height: 5rem;
+    display: flex;
+
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 1.6rem;
+      color: $text-white;
+    }
+
+    div {
+      flex: 1 1 100%;
+      background-color: $btn-secondary;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  label {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+
+  input {
+    height: 3.6rem;
+    padding: 1rem 2rem;
+    border: $border-form-inputs;
+    color: $text-secondary;
+  }
+
+  button {
+    cursor: pointer;
+    text-align: center;
+    align-self: flex-end;
+    padding: 0.5rem 1.5rem;
+    width: 25%;
+    border: $border-btn-primary;
+    border-radius: $border-r-4px;
+    background-color: $btn-primary;
+    color: $text-white;
+
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
+
+  &__container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+      margin-top: 2rem;
+    }
+  }
+}
+
+.form__active {
+  background-color: $btn-primary !important;
+}

@@ -2,12 +2,19 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
   height: 7vh;
   padding: 0 20rem;
   background-color: $header-grey;
 
+  &__container {
+    width: 100%;
+    max-width: 115.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   &__menu {
     flex: 1 1 auto;
   }
