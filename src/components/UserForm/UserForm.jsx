@@ -1,52 +1,55 @@
-let typeOfForm = "login";
-
-const changeFormType = () => {
-  const links = document.querySelectorAll(".form__type a");
-  links.forEach((link) =>
-    link.addEventListener("click", () => {
-      if (link.textContent.toLocaleLowerCase() === "login") {
-        typeOfForm = "login";
-        link.parentElement.classList.toggle("form__active");
-      } else if (link.textContent.toLocaleLowerCase() === "register") {
-        typeOfForm = "register";
-        link.parentElement.classList.toggle("form__active");
-      }
-    })
-  );
-};
-
-const UserForm = ({ isOpen }) => {
-  const LOGIN = "Log In";
-  const REGISTER = "Register";
-
-  if (isOpen) {
-    document.querySelector(".form").classList.add("form--open");
+import React from "react";
+import LoginForm from "../LoginForm/LoginForm";
+import RegisterForm from "../RegisterForm/RegisterForm";
+class UserForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { formType: "login", formActive: this.props.isFormOpen };
   }
-  changeFormType();
-  return (
-    <div className="form">
-      <div className="form__type">
-        <div className="form__active">
-          <a href="#">Login</a>
+
+  changeFormType = () => {
+    const loginType = document.querySelector(".form__login-link");
+    const registerType = document.querySelector(".form__register-link");
+
+    loginType.addEventListener("click", () => {
+      loginType.parentElement.classList.add("form__active");
+      registerType.parentElement.classList.remove("form__active");
+      this.setState({ formType: "login" });
+    });
+
+    registerType.addEventListener("click", () => {
+      loginType.parentElement.classList.remove("form__active");
+      registerType.parentElement.classList.add("form__active");
+      this.setState({ formType: "register" });
+    });
+  };
+
+  displayFormModal = () => {
+    document.querySelector(".form").classList.add("form--open");
+  };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.isFormOpen !== this.props.isFormOpen) {
+      this.setState({ formActive: this.props.isFormOpen });
+      this.displayFormModal();
+    }
+  }
+
+  render() {
+    return (
+      <div className="form">
+        <div className="form__type">
+          <div className="form__login-link form__active">
+            <a onClick={this.changeFormType}>Login</a>
+          </div>
+          <div className="form__register-link">
+            <a onClick={this.changeFormType}>Register</a>
+          </div>
         </div>
-        <div>
-          <a href="#">Register</a>
-        </div>
+        {this.state.formType === "login" ? <LoginForm /> : <RegisterForm />}
       </div>
-      <form className="form__container">
-        <h3 className="form__heading">
-          {typeOfForm === "login" ? LOGIN : REGISTER}
-        </h3>
-        <label htmlFor="userId">Username</label>
-        <input className="username" id="userId" type="text" required />
-        <label htmlFor="passId">Password</label>
-        <input className="password" id="passId" type="password" required />
-        <button type="submit">
-          {typeOfForm === "login" ? LOGIN : REGISTER}
-        </button>
-      </form>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default UserForm;

@@ -2,8 +2,7 @@ import HeaderAccount from "../HeaderAccount/HeaderAccount";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
 
 const Header = ({ userData, displayForm }) => {
-  const handleForm = (event) => {
-    event.preventDefault();
+  const handleForm = () => {
     displayForm();
   };
   return (
@@ -30,11 +29,7 @@ const Header = ({ userData, displayForm }) => {
         </div>
         <div className="header__account">
           {!userData.isLogged ? (
-            <a
-              href="#"
-              className="header__login"
-              onClick={(event) => handleForm(event)}
-            >
+            <a href="#" className="header__login" onClick={() => handleForm()}>
               Log in/Register<span>&rarr;</span>
             </a>
           ) : (

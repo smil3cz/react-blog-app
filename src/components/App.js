@@ -9,6 +9,8 @@ import "./HeaderAccount/styles.scss";
 import "./Footer/styles.scss";
 import "./UserForm/styles.scss";
 import "./HeaderLogo/styles.scss";
+import "./LoginForm/styles.scss";
+import "./RegisterForm/styles.scss";
 
 class App extends React.Component {
   constructor(props) {
@@ -32,14 +34,12 @@ class App extends React.Component {
     this.setState({ isFormOpen: true });
   };
 
-  componentDidMount() {}
-
   render() {
     return (
       <Fragment>
         <Header userData={this.state.user} displayForm={this.displayForm} />
         <main className="main">
-          <UserForm isOpen={this.state.isFormOpen} />
+          <UserForm isFormOpen={this.state.isFormOpen} />
         </main>
         <Footer />
       </Fragment>
