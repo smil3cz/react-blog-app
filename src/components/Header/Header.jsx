@@ -1,4 +1,5 @@
 import HeaderAccount from "../HeaderAccount/HeaderAccount";
+import HeaderLogo from "../HeaderLogo/HeaderLogo";
 
 const Header = ({ userData, displayForm }) => {
   const handleForm = (event) => {
@@ -12,7 +13,7 @@ const Header = ({ userData, displayForm }) => {
           <ul className="header__links">
             <li className="header__link-item">
               <a href="#" className="header__link">
-                Home
+                <HeaderLogo />
               </a>
             </li>
             <li className="header__link-item">

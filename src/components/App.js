@@ -8,6 +8,7 @@ import "./Header/styles.scss";
 import "./HeaderAccount/styles.scss";
 import "./Footer/styles.scss";
 import "./UserForm/styles.scss";
+import "./HeaderLogo/styles.scss";
 
 class App extends React.Component {
   constructor(props) {
