@@ -27,16 +27,8 @@
       color: $text-white;
     }
 
-    &-login {
-      flex: 1 1 50%;
-      background-color: $btn-primary;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    &-register {
-      flex: 1 1 50%;
+    div {
+      flex: 1 1 100%;
       background-color: $btn-secondary;
       display: flex;
       align-items: center;
@@ -76,4 +68,8 @@
       margin-top: 2rem;
     }
   }
+}
+
+.form__active {
+  background-color: $btn-primary !important;
 }
