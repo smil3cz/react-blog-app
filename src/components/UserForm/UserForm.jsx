@@ -35,6 +35,10 @@ class UserForm extends React.Component {
     }
   }
 
+  getSnapshotBeforeUpdate() {
+    this.changeFormType();
+  }
+
   render() {
     return (
       <div className="form">

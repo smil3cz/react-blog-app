@@ -1,0 +1,38 @@
+@import "../../styles/abstracts/variables";
+
+.admin {
+  &__header {
+    display: flex;
+    align-items: center;
+
+    h1 {
+      margin-right: 2rem;
+    }
+
+    button {
+      background-color: $btn-primary;
+      cursor: pointer;
+      color: $text-white;
+      border-radius: $border-r-4px;
+      border: $border-btn-primary;
+      padding: 0.6rem 1.2rem;
+    }
+  }
+
+  &__table {
+    margin-top: 4.8rem;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+
+    th {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: $text-primary;
+    }
+
+    td {
+      padding: 0.5rem, 1.2rem;
+    }
+  }
+}

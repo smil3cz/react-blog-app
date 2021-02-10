@@ -1,5 +1,6 @@
 import HeaderAccount from "../HeaderAccount/HeaderAccount";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
+import { Link } from "react-router-dom";
 
 const Header = ({ userData, displayForm }) => {
   const handleForm = () => {
@@ -10,21 +11,17 @@ const Header = ({ userData, displayForm }) => {
       <div className="header__container">
         <div className="header__menu">
           <ul className="header__links">
-            <li className="header__link-item">
-              <a href="#" className="header__link">
+            <Link className="header__link-item" to="/">
+              <li>
                 <HeaderLogo />
-              </a>
-            </li>
-            <li className="header__link-item">
-              <a href="#" className="header__link">
-                Recent Articles
-              </a>
-            </li>
-            <li className="header__link-item">
-              <a href="#" className="header__link">
-                About
-              </a>
-            </li>
+              </li>
+            </Link>
+            <Link className="header__link-item header__link">
+              <li>Recent Articles</li>
+            </Link>
+            <Link className="header__link-item header__link" to="/about">
+              <li>About</li>
+            </Link>
           </ul>
         </div>
         <div className="header__account">

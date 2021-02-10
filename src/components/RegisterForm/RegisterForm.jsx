@@ -6,6 +6,8 @@ const RegisterForm = ({ handleUserRegistration }) => {
       userPassword: event.target[1].value,
     };
     handleUserRegistration(user);
+    event.target[0].value = "";
+    event.target[1].value = "";
   };
 
   return (

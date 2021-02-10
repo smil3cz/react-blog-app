@@ -13,8 +13,8 @@ const registerUser = async (userName, userPassword) => {
     },
   });
 
-  const processedData = response.json();
-  return Promise.resolve(processedData);
+  const processedData = await response.json();
+  return processedData;
 };
 
 const loginUser = async (userName, userPassword, apiKey) => {
@@ -33,8 +33,8 @@ const loginUser = async (userName, userPassword, apiKey) => {
     },
   });
 
-  const processedData = response.json();
-  return Promise.resolve(processedData);
+  const processedData = await response.json();
+  return processedData;
 };
 
 module.exports = {
