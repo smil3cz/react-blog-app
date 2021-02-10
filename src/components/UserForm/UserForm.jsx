@@ -25,7 +25,7 @@ class UserForm extends React.Component {
   };
 
   displayFormModal = () => {
-    document.querySelector(".form").classList.add("form--open");
+    document.querySelector(".form").classList.toggle("form--open");
   };
 
   componentDidUpdate(prevProps) {
@@ -46,7 +46,13 @@ class UserForm extends React.Component {
             <a onClick={this.changeFormType}>Register</a>
           </div>
         </div>
-        {this.state.formType === "login" ? <LoginForm /> : <RegisterForm />}
+        {this.state.formType === "login" ? (
+          <LoginForm handleUserLogin={this.props.handleUserLogin} />
+        ) : (
+          <RegisterForm
+            handleUserRegistration={this.props.handleUserRegistration}
+          />
+        )}
       </div>
     );
   }
