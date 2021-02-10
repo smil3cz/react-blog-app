@@ -3,6 +3,7 @@ import "./App.scss";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import UserForm from "./UserForm/UserForm";
+import AdminHome from "./AdminHome/AdminHome";
 import { registerUser, loginUser } from "../api/apiHelper";
 import "./Header/styles.scss";
 import "./HeaderAccount/styles.scss";
@@ -11,6 +12,7 @@ import "./UserForm/styles.scss";
 import "./HeaderLogo/styles.scss";
 import "./LoginForm/styles.scss";
 import "./RegisterForm/styles.scss";
+import "./AdminHome/styles.scss";
 
 class App extends React.Component {
   constructor(props) {
@@ -74,6 +76,7 @@ class App extends React.Component {
             handleUserRegistration={this.handleUserRegistration}
             handleUserLogin={this.handleUserLogin}
           />
+          <AdminHome />
         </main>
         <Footer />
       </Fragment>
