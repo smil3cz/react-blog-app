@@ -1,10 +1,12 @@
 import React, { Fragment } from "react";
-import "./App.scss";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import UserForm from "./UserForm/UserForm";
-import AdminHome from "./AdminHome/AdminHome";
+import AboutPage from "./AboutPage/AboutPage";
+import HomePage from "./HomePage/HomePage";
 import { registerUser, loginUser } from "../api/apiHelper";
+import "./styles.scss";
 import "./Header/styles.scss";
 import "./HeaderAccount/styles.scss";
 import "./Footer/styles.scss";
@@ -13,6 +15,8 @@ import "./HeaderLogo/styles.scss";
 import "./LoginForm/styles.scss";
 import "./RegisterForm/styles.scss";
 import "./AdminHome/styles.scss";
+import "./HomePage/styles.scss";
+import "./AboutPage/styles.scss";
 
 class App extends React.Component {
   constructor(props) {
@@ -65,21 +69,28 @@ class App extends React.Component {
 
   render() {
     return (
-      <Fragment>
-        <Header
-          userData={this.state.userLogged}
-          displayForm={this.displayForm}
-        />
-        <main className="main">
-          <UserForm
-            isFormOpen={this.state.isFormOpen}
-            handleUserRegistration={this.handleUserRegistration}
-            handleUserLogin={this.handleUserLogin}
+      <Router>
+        <Fragment>
+          <Header
+            userData={this.state.userLogged}
+            displayForm={this.displayForm}
           />
-          <AdminHome />
-        </main>
-        <Footer />
-      </Fragment>
+          <main className="main">
+            <Switch>
+              <Route path="/" exact>
+                <HomePage userLogged={this.state.userLogged} />
+              </Route>
+              <Route path="/about" component={AboutPage} />
+            </Switch>
+            <UserForm
+              isFormOpen={this.state.isFormOpen}
+              handleUserRegistration={this.handleUserRegistration}
+              handleUserLogin={this.handleUserLogin}
+            />
+          </main>
+          <Footer />
+        </Fragment>
+      </Router>
     );
   }
 }
