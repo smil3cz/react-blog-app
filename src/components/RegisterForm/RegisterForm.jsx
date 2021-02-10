@@ -1,6 +1,18 @@
-const RegisterForm = () => {
+const RegisterForm = ({ handleUserRegistration }) => {
+  const userRegistration = (event) => {
+    event.preventDefault();
+    let user = {
+      userName: event.target[0].value,
+      userPassword: event.target[1].value,
+    };
+    handleUserRegistration(user);
+  };
+
   return (
-    <form className="form__container">
+    <form
+      onSubmit={(event) => userRegistration(event)}
+      className="form__container"
+    >
       <h3 className="form__heading">Register</h3>
       <label htmlFor="userId">Username</label>
       <input className="username" id="userId" type="text" required />

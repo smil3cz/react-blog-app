@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import avatar from "./images/avatar.png";
+import avatar from "./images/default_avatar.png";
 
 const HeaderAccount = () => {
   return (
