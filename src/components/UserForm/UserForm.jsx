@@ -12,14 +12,14 @@ class UserForm extends React.Component {
     const registerType = document.querySelector(".form__register-link");
 
     loginType.addEventListener("click", () => {
-      loginType.parentElement.classList.add("form__active");
-      registerType.parentElement.classList.remove("form__active");
+      loginType.classList.add("form__active");
+      registerType.classList.remove("form__active");
       this.setState({ formType: "login" });
     });
 
     registerType.addEventListener("click", () => {
-      loginType.parentElement.classList.remove("form__active");
-      registerType.parentElement.classList.add("form__active");
+      loginType.classList.remove("form__active");
+      registerType.classList.add("form__active");
       this.setState({ formType: "register" });
     });
   };
