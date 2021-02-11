@@ -1,59 +1,60 @@
-const registerUser = async (userName, userPassword) => {
+import axios from "axios";
+
+const registerUser = async (username, password) => {
+  const apiRegisterUrl = `https://fullstack.exercise.applifting.cz/tenants`;
+  const userCredentials = {
+    Name: username,
+    Password: password,
+  };
+  const requestOptions = {
+    method: `POST`,
+    headers: {
+      "Content-type": "application/json",
+    },
+  };
   try {
-    const API_LINK = "https://fullstack.exercise.applifting.cz/tenants";
-    const userCredentials = {
-      Name: userName,
-      Password: userPassword,
-    };
+    const response = await axios.post(
+      apiRegisterUrl,
+      userCredentials,
+      requestOptions
+    );
 
-    const response = await fetch(API_LINK, {
-      method: "POST",
-      body: JSON.stringify(userCredentials),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`An error has occured: CODE ${response.statusText}`);
+    if (response.status > 204) {
+      throw new Error(`Error ${response.statusText}`);
     }
-
-    const processedData = await response.json();
-    return processedData;
+    return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
-const loginUser = async (userName, userPassword, apiKey) => {
+const loginUser = async (username, password, apiKey) => {
+  const apiRegisterUrl = `https://fullstack.exercise.applifting.cz/login`;
+  const userCredentials = {
+    Username: username,
+    Password: password,
+  };
+  const requestOptions = {
+    method: `POST`,
+    headers: {
+      "X-API-KEY": apiKey,
+      "Content-type": "application/json",
+    },
+  };
   try {
-    const API_LINK = "https://fullstack.exercise.applifting.cz/login";
-    const userCredentials = {
-      Username: userName,
-      Password: userPassword,
-    };
+    const response = await axios.post(
+      apiRegisterUrl,
+      userCredentials,
+      requestOptions
+    );
 
-    const response = await fetch(API_LINK, {
-      method: "POST",
-      body: JSON.stringify(userCredentials),
-      headers: {
-        "X-API-KEY": apiKey,
-        "Content-type": "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`An error has occured: CODE ${response.statusText}`);
+    if (response.status > 204) {
+      throw new Error(`Error ${response.statusText}`);
     }
-
-    const processedData = await response.json();
-    return processedData;
+    return response.data;
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
-module.exports = {
-  registerUser,
-  loginUser,
-};
+export { registerUser, loginUser };

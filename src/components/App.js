@@ -6,7 +6,7 @@ import UserForm from "./UserForm/UserForm";
 import AboutPage from "./AboutPage/AboutPage";
 import HomePage from "./HomePage/HomePage";
 import DisplayArticles from "./DisplayArticles/DisplayArticles";
-import { registerUser, loginUser } from "../api/apiHelper";
+import { registerUser, loginUser } from "../api/apiHelper.js";
 import "./styles.scss";
 import "./Header/styles.scss";
 import "./HeaderAccount/styles.scss";
@@ -33,6 +33,7 @@ class App extends React.Component {
 
   handleUserRegistration = async ({ userName, userPassword }) => {
     const respond = await registerUser(userName, userPassword);
+    console.log(respond);
     this.setState({
       userRegistration: respond,
     });
@@ -49,6 +50,7 @@ class App extends React.Component {
         ? this.state.userLogin.apiKey
         : this.state.userRegistration.apiKey
     );
+    console.log(respond);
     if (!respond) {
       return this.setState({ incorrectCredentials: true });
     }
@@ -68,7 +70,6 @@ class App extends React.Component {
       userRegistration: null,
       incorrectCredentials: false,
       userLogged: true,
-      isFormOpen: false,
     });
   };
 
