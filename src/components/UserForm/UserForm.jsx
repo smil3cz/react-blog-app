@@ -33,9 +33,6 @@ class UserForm extends React.Component {
       this.setState({ formActive: this.props.isFormOpen });
       this.displayFormModal();
     }
-  }
-
-  getSnapshotBeforeUpdate() {
     this.changeFormType();
   }
 
