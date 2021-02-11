@@ -6,41 +6,30 @@ class UserForm extends React.Component {
     super(props);
     this.state = {
       formType: "login",
-      formActive: this.props.isFormOpen,
       formWarning: false,
     };
   }
 
-  changeFormType = () => {
-    const loginType = document.querySelector(".form__login-link");
-    const registerType = document.querySelector(".form__register-link");
+  changeFormType = (e) => {
+    const value = e.currentTarget.textContent;
+    const parentElement = e.target.parentNode;
+    const secondElement = parentElement.nextElementSibling
+      ? parentElement.nextElementSibling
+      : parentElement.previousElementSibling;
+    const active = "form__active";
 
-    loginType.addEventListener("click", () => {
-      loginType.classList.add("form__active");
-      registerType.classList.remove("form__active");
-      this.setState({ formType: "login" });
-    });
+    if (!parentElement.classList.contains(active)) {
+      parentElement.classList.add(active);
+      secondElement.classList.remove(active);
+    }
 
-    registerType.addEventListener("click", () => {
-      loginType.classList.remove("form__active");
-      registerType.classList.add("form__active");
-      this.setState({ formType: "register", formWarning: false });
-    });
-  };
-
-  displayFormModal = () => {
-    document.querySelector(".form").classList.toggle("form--open");
+    this.setState({ formType: value.toLowerCase() });
   };
 
   componentDidUpdate(prevProps) {
-    if (prevProps.isFormOpen !== this.props.isFormOpen) {
-      this.setState({ formActive: this.props.isFormOpen });
-      this.displayFormModal();
-    }
     if (prevProps.incorrectCredentials !== this.props.incorrectCredentials) {
       this.setState({ formWarning: this.props.incorrectCredentials });
     }
-    this.changeFormType();
   }
 
   render() {
@@ -48,10 +37,10 @@ class UserForm extends React.Component {
       <div className="form">
         <div className="form__type">
           <div className="form__login-link form__active">
-            <a onClick={this.changeFormType}>Login</a>
+            <a onClick={(e) => this.changeFormType(e)}>Login</a>
           </div>
           <div className="form__register-link">
-            <a onClick={this.changeFormType}>Register</a>
+            <a onClick={(e) => this.changeFormType(e)}>Register</a>
           </div>
         </div>
         {this.state.formType === "login" ? (
@@ -59,7 +48,6 @@ class UserForm extends React.Component {
         ) : (
           <RegisterForm
             handleUserRegistration={this.props.handleUserRegistration}
-            changeFormType={this.changeFormType}
           />
         )}
         <div className="form__warning">

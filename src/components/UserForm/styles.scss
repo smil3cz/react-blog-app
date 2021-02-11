@@ -1,7 +1,6 @@
 @import "../../styles/abstracts/variables";
 
 .form {
-  display: none;
   position: absolute;
   top: 50%;
   right: 50%;
@@ -13,14 +12,9 @@
   border-radius: $border-r-8px;
   overflow: hidden;
 
-  &--open {
-    display: block;
-  }
-
   &__type {
     height: 5rem;
     display: flex;
-    cursor: pointer;
 
     a {
       cursor: pointer;

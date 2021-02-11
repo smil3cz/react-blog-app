@@ -26,9 +26,11 @@ const Header = ({ userData, displayForm }) => {
         </div>
         <div className="header__account">
           {!userData ? (
-            <a href="#" className="header__login" onClick={() => handleForm()}>
-              Log in/Register<span>&rarr;</span>
-            </a>
+            <Link className="header__login" to="/user">
+              <p>
+                Log in/Register<span>&rarr;</span>
+              </p>
+            </Link>
           ) : (
             <HeaderAccount />
           )}

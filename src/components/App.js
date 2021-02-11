@@ -28,7 +28,6 @@ class App extends React.Component {
       userLogin: {},
       incorrectCredentials: false,
       userLogged: false,
-      isFormOpen: false,
     };
   }
 
@@ -73,18 +72,11 @@ class App extends React.Component {
     });
   };
 
-  displayForm = () => {
-    this.setState({ isFormOpen: true });
-  };
-
   render() {
     return (
       <Router>
         <Fragment>
-          <Header
-            userData={this.state.userLogged}
-            displayForm={this.displayForm}
-          />
+          <Header userData={this.state.userLogged} />
           <main className="main">
             <Switch>
               <Route path="/" exact>
@@ -97,13 +89,14 @@ class App extends React.Component {
                 <DisplayArticles />
               </Route>
               <Route path="/about" component={AboutPage} />
+              <Route path="/user">
+                <UserForm
+                  incorrectCredentials={this.state.incorrectCredentials}
+                  handleUserRegistration={this.handleUserRegistration}
+                  handleUserLogin={this.handleUserLogin}
+                />
+              </Route>
             </Switch>
-            <UserForm
-              incorrectCredentials={this.state.incorrectCredentials}
-              isFormOpen={this.state.isFormOpen}
-              handleUserRegistration={this.handleUserRegistration}
-              handleUserLogin={this.handleUserLogin}
-            />
           </main>
           <Footer />
         </Fragment>
