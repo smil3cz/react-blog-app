@@ -16,7 +16,7 @@ const Header = ({ userData, displayForm }) => {
                 <HeaderLogo />
               </li>
             </Link>
-            <Link className="header__link-item header__link">
+            <Link className="header__link-item header__link" to="/articles">
               <li>Recent Articles</li>
             </Link>
             <Link className="header__link-item header__link" to="/about">

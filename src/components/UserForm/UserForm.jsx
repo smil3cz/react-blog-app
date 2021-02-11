@@ -4,7 +4,11 @@ import RegisterForm from "../RegisterForm/RegisterForm";
 class UserForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { formType: "login", formActive: this.props.isFormOpen };
+    this.state = {
+      formType: "login",
+      formActive: this.props.isFormOpen,
+      formWarning: false,
+    };
   }
 
   changeFormType = () => {
@@ -20,7 +24,7 @@ class UserForm extends React.Component {
     registerType.addEventListener("click", () => {
       loginType.classList.remove("form__active");
       registerType.classList.add("form__active");
-      this.setState({ formType: "register" });
+      this.setState({ formType: "register", formWarning: false });
     });
   };
 
@@ -32,6 +36,9 @@ class UserForm extends React.Component {
     if (prevProps.isFormOpen !== this.props.isFormOpen) {
       this.setState({ formActive: this.props.isFormOpen });
       this.displayFormModal();
+    }
+    if (prevProps.incorrectCredentials !== this.props.incorrectCredentials) {
+      this.setState({ formWarning: this.props.incorrectCredentials });
     }
     this.changeFormType();
   }
@@ -54,6 +61,9 @@ class UserForm extends React.Component {
             handleUserRegistration={this.props.handleUserRegistration}
           />
         )}
+        <div className="form__warning">
+          {this.state.formWarning && "Wrong username or password!"}
+        </div>
       </div>
     );
   }

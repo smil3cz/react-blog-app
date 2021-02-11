@@ -5,6 +5,7 @@ import Footer from "./Footer/Footer";
 import UserForm from "./UserForm/UserForm";
 import AboutPage from "./AboutPage/AboutPage";
 import HomePage from "./HomePage/HomePage";
+import DisplayArticles from "./DisplayArticles/DisplayArticles";
 import { registerUser, loginUser } from "../api/apiHelper";
 import "./styles.scss";
 import "./Header/styles.scss";
@@ -17,6 +18,7 @@ import "./RegisterForm/styles.scss";
 import "./AdminHome/styles.scss";
 import "./HomePage/styles.scss";
 import "./AboutPage/styles.scss";
+import "./DisplayArticles/styles.scss";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,6 +26,7 @@ class App extends React.Component {
     this.state = {
       userRegistration: null,
       userLogin: null,
+      incorrectCredentials: false,
       userLogged: false,
       isFormOpen: false,
     };
@@ -37,6 +40,9 @@ class App extends React.Component {
   };
 
   handleUserLogin = async ({ userName, userPassword }) => {
+    if (!this.state.userRegistration) {
+      return this.setState({ incorrectCredentials: true });
+    }
     const respond = await loginUser(
       userName,
       userPassword,
@@ -44,6 +50,9 @@ class App extends React.Component {
         ? this.state.userLogin.apiKey
         : this.state.userRegistration.apiKey
     );
+    if (!respond) {
+      this.setState({ incorrectCredentials: true });
+    }
     const userLoginData = {
       userName,
       userPassword,
@@ -58,6 +67,7 @@ class App extends React.Component {
     this.setState({
       userLogin: userLoginData,
       userRegistration: null,
+      incorrectCredentials: false,
       userLogged: true,
       isFormOpen: false,
     });
@@ -80,9 +90,13 @@ class App extends React.Component {
               <Route path="/" exact>
                 <HomePage userLogged={this.state.userLogged} />
               </Route>
+              <Route path="/articles" exact>
+                <DisplayArticles />
+              </Route>
               <Route path="/about" component={AboutPage} />
             </Switch>
             <UserForm
+              incorrectCredentials={this.state.incorrectCredentials}
               isFormOpen={this.state.isFormOpen}
               handleUserRegistration={this.handleUserRegistration}
               handleUserLogin={this.handleUserLogin}

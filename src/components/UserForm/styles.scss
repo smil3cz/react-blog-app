@@ -20,6 +20,7 @@
   &__type {
     height: 5rem;
     display: flex;
+    cursor: pointer;
 
     a {
       cursor: pointer;
@@ -63,6 +64,13 @@
     &:hover {
       filter: brightness(1.2);
     }
+  }
+
+  &__warning {
+    text-align: center;
+    padding-top: 1rem;
+    font-size: 1.4rem;
+    color: $link-alert;
   }
 
   &__container {
