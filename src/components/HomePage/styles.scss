@@ -1,7 +1,11 @@
-.homepage__section {
+.homepage {
   text-align: center;
   p {
     margin-top: 10rem;
     font-size: 2rem;
+  }
+
+  &__name {
+    color: #2b7efb;
   }
 }

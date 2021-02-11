@@ -16,7 +16,7 @@ const Header = ({ userData, displayForm }) => {
                 <HeaderLogo />
               </li>
             </Link>
-            <Link className="header__link-item header__link">
+            <Link className="header__link-item header__link" to="/articles">
               <li>Recent Articles</li>
             </Link>
             <Link className="header__link-item header__link" to="/about">
@@ -26,9 +26,11 @@ const Header = ({ userData, displayForm }) => {
         </div>
         <div className="header__account">
           {!userData ? (
-            <a href="#" className="header__login" onClick={() => handleForm()}>
-              Log in/Register<span>&rarr;</span>
-            </a>
+            <Link className="header__login" to="/user">
+              <p>
+                Log in/Register<span>&rarr;</span>
+              </p>
+            </Link>
           ) : (
             <HeaderAccount />
           )}

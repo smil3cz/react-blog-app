@@ -1,9 +1,12 @@
-const HomePage = ({ userLogged }) => {
+const HomePage = ({ userLogged, userName }) => {
   return (
-    <section className="homepage__section">
+    <section className="homepage">
       <h1>Blog App</h1>
       {userLogged ? (
-        <p>Welcome to Blog App!</p>
+        <p>
+          Hi, <span className="homepage__name">{userName}</span>. Welcome to
+          Blog App!
+        </p>
       ) : (
         <p>Welcome to Blog App! Pls register to use our app.</p>
       )}

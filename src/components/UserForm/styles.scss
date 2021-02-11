@@ -1,7 +1,6 @@
 @import "../../styles/abstracts/variables";
 
 .form {
-  display: none;
   position: absolute;
   top: 50%;
   right: 50%;
@@ -12,10 +11,6 @@
   box-shadow: $modal-shadow;
   border-radius: $border-r-8px;
   overflow: hidden;
-
-  &--open {
-    display: block;
-  }
 
   &__type {
     height: 5rem;
@@ -63,6 +58,13 @@
     &:hover {
       filter: brightness(1.2);
     }
+  }
+
+  &__warning {
+    text-align: center;
+    padding-top: 1rem;
+    font-size: 1.4rem;
+    color: $link-alert;
   }
 
   &__container {
