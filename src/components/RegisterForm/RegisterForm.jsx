@@ -1,4 +1,4 @@
-const RegisterForm = ({ handleUserRegistration }) => {
+const RegisterForm = ({ handleUserRegistration, changeFormType }) => {
   const userRegistration = (event) => {
     event.preventDefault();
     let user = {
@@ -8,6 +8,7 @@ const RegisterForm = ({ handleUserRegistration }) => {
     handleUserRegistration(user);
     event.target[0].value = "";
     event.target[1].value = "";
+    changeFormType();
   };
 
   return (

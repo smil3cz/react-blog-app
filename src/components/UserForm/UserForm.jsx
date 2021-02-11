@@ -59,6 +59,7 @@ class UserForm extends React.Component {
         ) : (
           <RegisterForm
             handleUserRegistration={this.props.handleUserRegistration}
+            changeFormType={this.changeFormType}
           />
         )}
         <div className="form__warning">

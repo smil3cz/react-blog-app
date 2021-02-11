@@ -24,8 +24,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userRegistration: null,
-      userLogin: null,
+      userRegistration: {},
+      userLogin: {},
       incorrectCredentials: false,
       userLogged: false,
       isFormOpen: false,
@@ -51,7 +51,7 @@ class App extends React.Component {
         : this.state.userRegistration.apiKey
     );
     if (!respond) {
-      this.setState({ incorrectCredentials: true });
+      return this.setState({ incorrectCredentials: true });
     }
     const userLoginData = {
       userName,
@@ -88,7 +88,10 @@ class App extends React.Component {
           <main className="main">
             <Switch>
               <Route path="/" exact>
-                <HomePage userLogged={this.state.userLogged} />
+                <HomePage
+                  userLogged={this.state.userLogged}
+                  userName={this.state.userLogin.userName}
+                />
               </Route>
               <Route path="/articles" exact>
                 <DisplayArticles />
