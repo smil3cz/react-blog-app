@@ -1,10 +1,5 @@
 import React, { Fragment } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import UserForm from "./UserForm/UserForm";
@@ -12,7 +7,7 @@ import AboutPage from "./AboutPage/AboutPage";
 import HomePage from "./HomePage/HomePage";
 import DisplayArticles from "./DisplayArticles/DisplayArticles";
 import ProtectedRouteArticles from "./ProtectedRouteArticles/ProtectedRouteArticles";
-import { registerUser, loginUser } from "../api/apiHelper.js";
+import { registerUser, loginUser } from "../api/apiUserHelper.js";
 import "./styles.scss";
 import "./Header/styles.scss";
 import "./HeaderAccount/styles.scss";
@@ -55,7 +50,6 @@ class App extends React.Component {
         ? this.state.userLogin.apiKey
         : this.state.userRegistration.apiKey
     );
-    console.log(respond);
     if (!respond) {
       return this.setState({ incorrectCredentials: true });
     }
@@ -97,6 +91,7 @@ class App extends React.Component {
                 exact
                 component={DisplayArticles}
                 userLogged={this.state.userLogged}
+                userLogin={this.state.userLogin}
               />
               <Route path="/about" component={AboutPage} />
               <Route path="/user">
