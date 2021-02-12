@@ -44,7 +44,10 @@ class UserForm extends React.Component {
           </div>
         </div>
         {this.state.formType === "login" ? (
-          <LoginForm handleUserLogin={this.props.handleUserLogin} />
+          <LoginForm
+            handleUserLogin={this.props.handleUserLogin}
+            userLogged={this.props.userLogged}
+          />
         ) : (
           <RegisterForm
             handleUserRegistration={this.props.handleUserRegistration}

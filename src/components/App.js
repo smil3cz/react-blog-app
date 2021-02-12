@@ -1,12 +1,18 @@
 import React, { Fragment } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import UserForm from "./UserForm/UserForm";
 import AboutPage from "./AboutPage/AboutPage";
 import HomePage from "./HomePage/HomePage";
 import DisplayArticles from "./DisplayArticles/DisplayArticles";
-import { registerUser, loginUser } from "../api/apiHelper";
+import ProtectedRouteArticles from "./ProtectedRouteArticles/ProtectedRouteArticles";
+import { registerUser, loginUser } from "../api/apiHelper.js";
 import "./styles.scss";
 import "./Header/styles.scss";
 import "./HeaderAccount/styles.scss";
@@ -49,6 +55,7 @@ class App extends React.Component {
         ? this.state.userLogin.apiKey
         : this.state.userRegistration.apiKey
     );
+    console.log(respond);
     if (!respond) {
       return this.setState({ incorrectCredentials: true });
     }
@@ -68,7 +75,6 @@ class App extends React.Component {
       userRegistration: null,
       incorrectCredentials: false,
       userLogged: true,
-      isFormOpen: false,
     });
   };
 
@@ -85,12 +91,16 @@ class App extends React.Component {
                   userName={this.state.userLogin.userName}
                 />
               </Route>
-              <Route path="/articles" exact>
-                <DisplayArticles />
-              </Route>
+              <ProtectedRouteArticles
+                path="/articles"
+                exact
+                component={DisplayArticles}
+                userLogged={this.state.userLogged}
+              />
               <Route path="/about" component={AboutPage} />
               <Route path="/user">
                 <UserForm
+                  userLogged={this.state.userLogged}
                   incorrectCredentials={this.state.incorrectCredentials}
                   handleUserRegistration={this.handleUserRegistration}
                   handleUserLogin={this.handleUserLogin}
