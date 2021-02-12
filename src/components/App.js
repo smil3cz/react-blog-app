@@ -70,6 +70,7 @@ class App extends React.Component {
       createdAt: this.state.userRegistration.createdAt,
       lastUsed: this.state.userRegistration.lastUsed,
     };
+
     this.setState({
       userLogin: userLoginData,
       userRegistration: null,
