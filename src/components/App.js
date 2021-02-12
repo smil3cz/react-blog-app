@@ -39,7 +39,6 @@ class App extends React.Component {
 
   handleUserRegistration = async ({ userName, userPassword }) => {
     const respond = await registerUser(userName, userPassword);
-    console.log(respond);
     this.setState({
       userRegistration: respond,
     });
@@ -101,6 +100,7 @@ class App extends React.Component {
               <Route path="/about" component={AboutPage} />
               <Route path="/user">
                 <UserForm
+                  userLogged={this.state.userLogged}
                   incorrectCredentials={this.state.incorrectCredentials}
                   handleUserRegistration={this.handleUserRegistration}
                   handleUserLogin={this.handleUserLogin}
