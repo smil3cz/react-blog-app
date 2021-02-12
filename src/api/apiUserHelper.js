@@ -13,18 +13,15 @@ const registerUser = async (username, password) => {
     },
   };
   try {
-    const response = await axios.post(
+    const { data } = await axios.post(
       apiRegisterUrl,
       userCredentials,
       requestOptions
     );
 
-    if (response.status > 204) {
-      throw new Error(`Error ${response.statusText}`);
-    }
-    return response.data;
+    return data;
   } catch (error) {
-    console.log(error);
+    console.dir(`Error during registration - ${error.message}`);
   }
 };
 
@@ -42,18 +39,15 @@ const loginUser = async (username, password, apiKey) => {
     },
   };
   try {
-    const response = await axios.post(
+    const { data } = await axios.post(
       apiRegisterUrl,
       userCredentials,
       requestOptions
     );
 
-    if (response.status > 204) {
-      throw new Error(`Error ${response.statusText}`);
-    }
-    return response.data;
+    return data;
   } catch (error) {
-    console.log(error);
+    console.log(`Error during login - ${error.message}`);
   }
 };
 
