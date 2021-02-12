@@ -8,7 +8,6 @@ const DisplayArticles = ({ userLogin }) => {
   const [articles, setArticles] = useState([]);
   const loadArticles = async () => {
     const data = await getAllArticles(userLogin.apiKey, userLogin.accessToken);
-    console.log(data);
     setArticles(data);
   };
 
