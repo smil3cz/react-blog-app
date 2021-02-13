@@ -1,14 +1,26 @@
 import { getAllArticles } from "../../api/apiArticleHelper.js";
 import { useState, useEffect } from "react";
+import ArticlesListItem from "../ArticlesListItem/ArticlesListItem";
 
 const DisplayArticles = ({ userLogin }) => {
-  useEffect(() => {
-    loadArticles();
-  }, []);
   const [articles, setArticles] = useState([]);
-  const loadArticles = async () => {
+  useEffect(() => {
+    fetchArticles();
+  }, [articles.length]);
+
+  const fetchArticles = async () => {
     const data = await getAllArticles(userLogin.apiKey, userLogin.accessToken);
     setArticles(data);
+  };
+
+  const renderArticles = () => {
+    if (articles.length > 0) {
+      return articles.map((article) => (
+        <ArticlesListItem key={article.articleId} articleData={article} />
+      ));
+    } else {
+      return <p>Sry, no articles yet!</p>;
+    }
   };
 
   return (
@@ -16,11 +28,7 @@ const DisplayArticles = ({ userLogin }) => {
       <header className="articles__header">
         <h1>Recent articles</h1>
       </header>
-      <div className="articles__list">
-        {articles.length > 0
-          ? `We have ${articles.length} articles`
-          : `Sry, no articles yet!`}
-      </div>
+      <div className="articles__list">{renderArticles()}</div>
     </section>
   );
 };

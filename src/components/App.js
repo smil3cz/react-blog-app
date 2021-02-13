@@ -20,6 +20,7 @@ import "./AdminHome/styles.scss";
 import "./HomePage/styles.scss";
 import "./AboutPage/styles.scss";
 import "./DisplayArticles/styles.scss";
+import "./ArticlesListItem/styles.scss";
 
 class App extends React.Component {
   constructor(props) {
