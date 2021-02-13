@@ -1,0 +1,55 @@
+@import "../../styles/abstracts/variables";
+
+.article {
+  width: 70%;
+  display: flex;
+  gap: 2rem;
+
+  * {
+    margin-top: 1rem;
+  }
+
+  &__image {
+    width: 33%;
+    img {
+      width: 100%;
+    }
+  }
+  &__content {
+    width: 66%;
+  }
+
+  &__perex {
+    font-size: 1.6rem;
+  }
+
+  &__details {
+    font-size: 1.4rem;
+    display: flex;
+    color: $text-secondary;
+    p:not(:last-of-type) {
+      margin-right: 1.5rem;
+    }
+  }
+  &__actions {
+    list-style: none;
+    display: flex;
+
+    & > li {
+      margin-left: 1.5rem;
+    }
+    li:not(:last-of-type) {
+      margin-right: 1.5rem;
+    }
+  }
+
+  &__actions {
+    font-size: 1.4rem;
+    &-read {
+      color: $link-primary;
+    }
+    &-comments {
+      color: $text-secondary;
+    }
+  }
+}
