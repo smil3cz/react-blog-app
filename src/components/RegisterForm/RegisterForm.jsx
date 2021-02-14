@@ -1,6 +1,7 @@
 import FormButton from "../FormButton/FormButton";
 import FormInput from "../FormInput/FormInput";
 import FormLabel from "../FormLabel/FormLabel";
+import "./styles.scss";
 
 const RegisterForm = ({ handleUserRegistration }) => {
   const userRegistration = (event) => {

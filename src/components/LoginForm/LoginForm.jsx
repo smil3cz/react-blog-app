@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import FormButton from "../FormButton/FormButton";
 import FormInput from "../FormInput/FormInput";
 import FormLabel from "../FormLabel/FormLabel";
+import "./styles.scss";
 
 const LoginForm = ({ handleUserLogin, userLogged }) => {
   const userLogin = (event) => {

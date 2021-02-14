@@ -1,3 +1,5 @@
+import "./styles.scss";
+
 const AdminHome = () => {
   return (
     <section className="admin">

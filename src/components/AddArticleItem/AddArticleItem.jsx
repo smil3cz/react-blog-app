@@ -2,6 +2,7 @@ import { addNewArticle } from "..//../api/apiArticleHelper.js";
 import FormButton from "../FormButton/FormButton";
 import FormInput from "../FormInput/FormInput.jsx";
 import FormLabel from "../FormLabel/FormLabel";
+import "./styles.scss";
 
 const AddArticleItem = () => {
   const data = {
