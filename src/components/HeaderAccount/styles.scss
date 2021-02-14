@@ -1,15 +1,19 @@
 @import "../../styles/abstracts/variables";
 
 .header__account {
+  &-menu {
+    display: flex;
+    list-style: none;
+  }
   &-link {
     margin-right: 2rem;
-
+    font-size: 1.6rem;
     &:link,
     &:visited {
       text-decoration: none;
       color: $btn-primary;
-      font-size: 1.6rem;
     }
+    &:hover,
     &:active {
       color: $text-primary;
     }

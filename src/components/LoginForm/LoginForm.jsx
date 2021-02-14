@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import FormButton from "../FormButton/FormButton";
+import FormInput from "../FormInput/FormInput";
 
 const LoginForm = ({ handleUserLogin, userLogged }) => {
   const userLogin = (event) => {
@@ -22,10 +24,12 @@ const LoginForm = ({ handleUserLogin, userLogged }) => {
     <form onSubmit={(event) => userLogin(event)} className="form__container">
       <h3 className="form__heading">Log In</h3>
       <label htmlFor="userId">Username</label>
-      <input className="username" id="userId" type="text" required />
+      <FormInput id="userId" type="text" size="normal" />
       <label htmlFor="passId">Password</label>
-      <input className="password" id="passId" type="password" required />
-      <button type="submit">Log In</button>
+      <FormInput id="passId" type="password" size="normal" />
+      <FormButton color="primary" type="submit">
+        Log In
+      </FormButton>
     </form>
   );
 };

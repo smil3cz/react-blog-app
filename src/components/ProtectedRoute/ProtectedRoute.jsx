@@ -1,23 +1,23 @@
 import { Redirect, Route } from "react-router-dom";
 
-const ProtectedRouteArticles = ({
+const ProtectedRoute = ({
   component: Component,
   userLogged,
   userLogin,
-  ...rest
+  ...other
 }) => {
   return (
     <Route
-      {...rest}
-      render={(props) => {
-        return userLogged ? (
+      {...other}
+      render={(props) =>
+        userLogged ? (
           <Component {...props} userLogin={userLogin} />
         ) : (
           <Redirect to={{ pathname: "/user" }} />
-        );
-      }}
+        )
+      }
     />
   );
 };
 
-export default ProtectedRouteArticles;
+export default ProtectedRoute;

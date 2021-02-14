@@ -1,17 +1,18 @@
 import { Fragment } from "react";
 import avatar from "./images/default_avatar.png";
+import { Link } from "react-router-dom";
 
 const HeaderAccount = () => {
   return (
     <Fragment>
-      <div className="header__account-menu">
-        <a href="#" className="header__account-link">
-          My Articles
-        </a>
-        <a href="#" className="header__account-link">
-          Create Articles
-        </a>
-      </div>
+      <ul className="header__account-menu">
+        <Link to="/my-articles" className="header__account-link">
+          <li>My Articles</li>
+        </Link>
+        <Link to="create-article" className="header__account-link">
+          <li>Create Articles</li>
+        </Link>
+      </ul>
       <div className="header__account-avatar">
         <img src={avatar} alt="User Avatar" />
       </div>

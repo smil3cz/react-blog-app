@@ -1,0 +1,14 @@
+@import "../../styles/abstracts/variables";
+
+.form-input {
+  height: 3.6rem;
+  padding: 1rem 2rem;
+  color: $text-secondary;
+  border: $border-form-inputs;
+  &--normal {
+    width: 32rem;
+  }
+  &--big {
+    width: 74rem;
+  }
+}

@@ -1,3 +1,6 @@
+import FormButton from "../FormButton/FormButton";
+import FormInput from "../FormInput/FormInput";
+
 const RegisterForm = ({ handleUserRegistration }) => {
   const userRegistration = (event) => {
     event.preventDefault();
@@ -17,10 +20,12 @@ const RegisterForm = ({ handleUserRegistration }) => {
     >
       <h3 className="form__heading">Register</h3>
       <label htmlFor="userId">Username</label>
-      <input className="username" id="userId" type="text" required />
+      <FormInput id="userId" size="normal" type="text" />
       <label htmlFor="passId">Password</label>
-      <input className="password" id="passId" type="password" required />
-      <button type="submit">Register</button>
+      <FormInput id="passId" size="normal" type="password" />
+      <FormButton color="primary" type="submit">
+        Register
+      </FormButton>
     </form>
   );
 };
