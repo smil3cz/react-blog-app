@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import FormButton from "../FormButton/FormButton";
 import FormInput from "../FormInput/FormInput";
+import FormLabel from "../FormLabel/FormLabel";
 
 const LoginForm = ({ handleUserLogin, userLogged }) => {
   const userLogin = (event) => {
@@ -23,9 +24,9 @@ const LoginForm = ({ handleUserLogin, userLogged }) => {
   return (
     <form onSubmit={(event) => userLogin(event)} className="form__container">
       <h3 className="form__heading">Log In</h3>
-      <label htmlFor="userId">Username</label>
+      <FormLabel id="userId">Username</FormLabel>
       <FormInput id="userId" type="text" size="normal" />
-      <label htmlFor="passId">Password</label>
+      <FormLabel id="passId">Password</FormLabel>
       <FormInput id="passId" type="password" size="normal" />
       <FormButton color="primary" type="submit">
         Log In
