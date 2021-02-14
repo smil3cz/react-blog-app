@@ -1,3 +1,5 @@
+import "./styles.scss";
+
 const HomePage = ({ userLogged, userName }) => {
   return (
     <section className="homepage">

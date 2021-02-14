@@ -1,5 +1,7 @@
 import FormButton from "../FormButton/FormButton";
 import FormInput from "../FormInput/FormInput";
+import FormLabel from "../FormLabel/FormLabel";
+import "./styles.scss";
 
 const RegisterForm = ({ handleUserRegistration }) => {
   const userRegistration = (event) => {
@@ -19,11 +21,11 @@ const RegisterForm = ({ handleUserRegistration }) => {
       className="form__container"
     >
       <h3 className="form__heading">Register</h3>
-      <label htmlFor="userId">Username</label>
+      <FormLabel id="userId">Username</FormLabel>
       <FormInput id="userId" size="normal" type="text" />
-      <label htmlFor="passId">Password</label>
+      <FormLabel id="passId">Password</FormLabel>
       <FormInput id="passId" size="normal" type="password" />
-      <FormButton color="primary" type="submit">
+      <FormButton color="primary" type="submit" position="end">
         Register
       </FormButton>
     </form>

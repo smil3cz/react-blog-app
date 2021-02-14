@@ -1,6 +1,7 @@
 import { getAllArticles } from "../../api/apiArticleHelper.js";
 import { useState, useEffect } from "react";
 import ArticlesListItem from "../ArticlesListItem/ArticlesListItem";
+import "./styles.scss";
 
 const DisplayArticles = ({ userLogin }) => {
   const fetchArticles = async () => {

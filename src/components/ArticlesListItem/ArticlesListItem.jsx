@@ -1,4 +1,5 @@
 import articleImage from "./test.jpg";
+import "./styles.scss";
 
 const ArticlesListItem = ({ articleData }) => {
   return (

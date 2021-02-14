@@ -1,5 +1,8 @@
 import { addNewArticle } from "..//../api/apiArticleHelper.js";
 import FormButton from "../FormButton/FormButton";
+import FormInput from "../FormInput/FormInput.jsx";
+import FormLabel from "../FormLabel/FormLabel";
+import "./styles.scss";
 
 const AddArticleItem = () => {
   const data = {
@@ -17,12 +20,14 @@ const AddArticleItem = () => {
         </FormButton>
       </header>
       <section className="create-article__content">
-        <label htmlFor="title">Article Title</label>
-        <input id="title" type="text" name="article-title" />
-        <label htmlFor="image">Featured image</label>
-        <button type="button">Upload an Image</button>
-        <label htmlFor="create-article__input-text">Content</label>
-        <textarea required></textarea>
+        <FormLabel id="title">Article Title</FormLabel>
+        <FormInput id="title" type="text" size="big" />
+        <FormLabel>Upload an Image</FormLabel>
+        <FormButton color="secondary" type="button" position="start">
+          Featured image
+        </FormButton>
+        <FormLabel id="input">Content</FormLabel>
+        <textarea rows="40" id="input" required></textarea>
       </section>
     </form>
   );

@@ -11,20 +11,6 @@ import DisplayArticles from "./DisplayArticles/DisplayArticles";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import { registerUser, loginUser } from "../api/apiUserHelper.js";
 import "./styles.scss";
-import "./Header/styles.scss";
-import "./HeaderAccount/styles.scss";
-import "./Footer/styles.scss";
-import "./UserForm/styles.scss";
-import "./HeaderLogo/styles.scss";
-import "./LoginForm/styles.scss";
-import "./RegisterForm/styles.scss";
-import "./AdminHome/styles.scss";
-import "./HomePage/styles.scss";
-import "./AboutPage/styles.scss";
-import "./DisplayArticles/styles.scss";
-import "./ArticlesListItem/styles.scss";
-import "./AdminMyArticles/styles.scss";
-import "./AddArticleItem/styles.scss";
 
 class App extends React.Component {
   constructor(props) {

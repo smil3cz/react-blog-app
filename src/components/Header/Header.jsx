@@ -1,17 +1,16 @@
 import HeaderAccount from "../HeaderAccount/HeaderAccount";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
 import { Link } from "react-router-dom";
+import "./styles.scss";
+import "../HeaderLogo/styles.scss";
 
 const Header = ({ userData, displayForm }) => {
-  const handleForm = () => {
-    displayForm();
-  };
   return (
     <header className="header">
       <div className="header__container">
         <div className="header__menu">
           <ul className="header__links">
-            <Link className="header__link-item" to="/">
+            <Link className="header__logo" to="/">
               <li>
                 <HeaderLogo />
               </li>

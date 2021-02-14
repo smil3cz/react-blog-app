@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import avatar from "./images/default_avatar.png";
 import { Link } from "react-router-dom";
+import "./styles.scss";
 
 const HeaderAccount = () => {
   return (
