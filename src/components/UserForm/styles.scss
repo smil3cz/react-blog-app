@@ -44,22 +44,6 @@
     color: $text-secondary;
   }
 
-  button {
-    cursor: pointer;
-    text-align: center;
-    align-self: flex-end;
-    padding: 0.5rem 1.5rem;
-    width: 25%;
-    border: $border-btn-primary;
-    border-radius: $border-r-4px;
-    background-color: $btn-primary;
-    color: $text-white;
-
-    &:hover {
-      filter: brightness(1.2);
-    }
-  }
-
   &__warning {
     text-align: center;
     padding-top: 1rem;

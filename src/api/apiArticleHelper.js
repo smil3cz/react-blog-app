@@ -1,12 +1,5 @@
 import axios from "axios";
 
-Storage.prototype.setItem = function (key, obj) {
-  return this.setItem(key, JSON.stringify(obj));
-};
-Storage.prototype.getItem = function (key) {
-  return JSON.parse(this.getItem(key));
-};
-
 const getAllArticles = async (userApiKey, userAccessToken) => {
   const apiArticleUrl = "https://fullstack.exercise.applifting.cz/articles";
   const options = {
@@ -38,7 +31,7 @@ const addNewArticle = async (userApiKey, userAccessToken, articleData) => {
   };
   try {
     const { data } = await axios.post(apiArticleUrl, articleData, options);
-    localStorage.setItem(data.articleId, data);
+    localStorage.setItem(data.articleId, JSON.stringify(data));
   } catch (error) {
     console.log(`Error fetching data - ${error.message}`);
   }

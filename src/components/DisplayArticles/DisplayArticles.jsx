@@ -3,15 +3,23 @@ import { useState, useEffect } from "react";
 import ArticlesListItem from "../ArticlesListItem/ArticlesListItem";
 
 const DisplayArticles = ({ userLogin }) => {
+  const fetchArticles = async () => {
+    if (localStorage.getItem("articles")) {
+      setArticles(JSON.parse(localStorage.getItem("articles")));
+    } else {
+      const data = await getAllArticles(
+        userLogin.apiKey,
+        userLogin.accessToken
+      );
+      localStorage.setItem("articles", JSON.stringify(data));
+      setArticles(data);
+    }
+  };
+
   const [articles, setArticles] = useState([]);
   useEffect(() => {
     fetchArticles();
   }, [articles.length]);
-
-  const fetchArticles = async () => {
-    const data = await getAllArticles(userLogin.apiKey, userLogin.accessToken);
-    setArticles(data);
-  };
 
   const renderArticles = () => {
     if (articles.length > 0) {

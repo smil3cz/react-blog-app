@@ -5,8 +5,10 @@ import Footer from "./Footer/Footer";
 import UserForm from "./UserForm/UserForm";
 import AboutPage from "./AboutPage/AboutPage";
 import HomePage from "./HomePage/HomePage";
+import AddArticleItem from "./AddArticleItem/AddArticleItem";
+import AdminMyArticles from "./AdminMyArticles/AdminMyArticles";
 import DisplayArticles from "./DisplayArticles/DisplayArticles";
-import ProtectedRouteArticles from "./ProtectedRouteArticles/ProtectedRouteArticles";
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import { registerUser, loginUser } from "../api/apiUserHelper.js";
 import "./styles.scss";
 import "./Header/styles.scss";
@@ -22,6 +24,7 @@ import "./AboutPage/styles.scss";
 import "./DisplayArticles/styles.scss";
 import "./ArticlesListItem/styles.scss";
 import "./AdminMyArticles/styles.scss";
+import "./AddArticleItem/styles.scss";
 
 class App extends React.Component {
   constructor(props) {
@@ -66,7 +69,6 @@ class App extends React.Component {
       createdAt: this.state.userRegistration.createdAt,
       lastUsed: this.state.userRegistration.lastUsed,
     };
-
     this.setState({
       userLogin: userLoginData,
       userRegistration: null,
@@ -88,10 +90,21 @@ class App extends React.Component {
                   userName={this.state.userLogin.userName}
                 />
               </Route>
-              <ProtectedRouteArticles
+              <ProtectedRoute
                 path="/articles"
-                exact
                 component={DisplayArticles}
+                userLogged={this.state.userLogged}
+                userLogin={this.state.userLogin}
+              />
+              <ProtectedRoute
+                path="/my-articles"
+                userLogged={this.state.userLogged}
+                component={AdminMyArticles}
+                userLogin={this.state.userLogin}
+              />
+              <ProtectedRoute
+                path="/create-article"
+                component={AddArticleItem}
                 userLogged={this.state.userLogged}
                 userLogin={this.state.userLogin}
               />

@@ -1,0 +1,19 @@
+.create-article {
+  width: 75%;
+  &__header {
+    display: flex;
+    align-items: center;
+
+    h1 {
+      margin-right: 2rem;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      width: 30rem;
+    }
+  }
+}
