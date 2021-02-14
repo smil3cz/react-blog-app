@@ -1,9 +1,8 @@
 @import "../../styles/abstracts/variables";
 
 .button {
-  align-self: flex-end;
   cursor: pointer;
-  width: 13rem;
+  width: 17rem;
   height: 3.5rem;
   border-radius: $border-r-4px;
   border: $border-btn-primary;
@@ -17,6 +16,14 @@
   &--secondary {
     background-color: $btn-secondary;
     border: 1px solid $btn-secondary;
+  }
+
+  &--start {
+    align-self: flex-start;
+  }
+
+  &--end {
+    align-self: flex-end;
   }
 
   &:hover {

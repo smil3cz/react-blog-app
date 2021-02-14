@@ -28,7 +28,7 @@ const LoginForm = ({ handleUserLogin, userLogged }) => {
       <FormInput id="userId" type="text" size="normal" />
       <FormLabel id="passId">Password</FormLabel>
       <FormInput id="passId" type="password" size="normal" />
-      <FormButton color="primary" type="submit">
+      <FormButton color="primary" type="submit" position="end">
         Log In
       </FormButton>
     </form>

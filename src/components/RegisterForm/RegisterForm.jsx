@@ -24,7 +24,7 @@ const RegisterForm = ({ handleUserRegistration }) => {
       <FormInput id="userId" size="normal" type="text" />
       <FormLabel id="passId">Password</FormLabel>
       <FormInput id="passId" size="normal" type="password" />
-      <FormButton color="primary" type="submit">
+      <FormButton color="primary" type="submit" position="end">
         Register
       </FormButton>
     </form>
