@@ -19,7 +19,7 @@ const getAllArticles = async (userApiKey, userAccessToken) => {
   }
 };
 
-const addNewArticle = async (userApiKey, userAccessToken, articleData) => {
+const saveNewArticle = async (userApiKey, userAccessToken, articleData) => {
   const apiArticleUrl = "https://fullstack.exercise.applifting.cz/articles";
   const options = {
     method: "POST",
@@ -31,10 +31,10 @@ const addNewArticle = async (userApiKey, userAccessToken, articleData) => {
   };
   try {
     const { data } = await axios.post(apiArticleUrl, articleData, options);
-    localStorage.setItem(data.articleId, JSON.stringify(data));
+    return data;
   } catch (error) {
     console.log(`Error fetching data - ${error.message}`);
   }
 };
 
-export { getAllArticles, addNewArticle };
+export { getAllArticles, saveNewArticle };

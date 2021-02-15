@@ -1,18 +1,26 @@
-import { addNewArticle } from "..//../api/apiArticleHelper.js";
+import { saveNewArticle } from "..//../api/apiArticleHelper.js";
 import FormButton from "../FormButton/FormButton";
 import FormInput from "../FormInput/FormInput.jsx";
 import FormLabel from "../FormLabel/FormLabel";
 import "./styles.scss";
 
-const AddArticleItem = () => {
-  const data = {
-    title: "First article",
-    perex: "Some stuff from first article",
-    content: `They must be delivered safely or other star systems will suffer the same fate as Alderaan. Your destiny lies along a different path than mine. The Force will be with you...always! Boy you said it, Chewie. Where did you dig up that old fossil? Ben is a great man. Yeah, great at getting us into trouble. I didn't hear you give any ideas... Well, anything would be better than just hanging around waiting for him to pick us up... Who do you think...`,
+const AddArticleItem = ({ userLogin }) => {
+  const addNewArticle = async (event) => {
+    event.preventDefault();
+    const articleData = {
+      title: event.target.title.value,
+      perex:
+        event.target.input.value.length <= 250
+          ? event.target.input.value.slice(0)
+          : event.target.input.value.slice(0, 250),
+      content: event.target.input.value,
+      username: userLogin.userName,
+    };
+    await saveNewArticle(userLogin.apiKey, userLogin.accessToken, articleData);
   };
-  // addNewArticle(data);
+
   return (
-    <form className="create-article">
+    <form onSubmit={(e) => addNewArticle(e)} className="create-article">
       <header className="create-article__header">
         <h1>Create new article</h1>
         <FormButton color="primary" type="submit">
