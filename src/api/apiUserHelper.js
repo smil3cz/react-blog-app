@@ -26,28 +26,34 @@ const registerUser = async (username, password) => {
 };
 
 const loginUser = async (username, password, apiKey) => {
+  const savedUser = JSON.parse(localStorage.getItem("userLogin"));
   const apiRegisterUrl = `https://fullstack.exercise.applifting.cz/login`;
   const userCredentials = {
-    Username: username,
-    Password: password,
+    Username: savedUser.userName || username,
+    Password: savedUser.userPassword || password,
   };
-  const requestOptions = {
-    method: `POST`,
-    headers: {
-      "X-API-KEY": apiKey,
-      "Content-type": "application/json",
-    },
-  };
-  try {
-    const { data } = await axios.post(
-      apiRegisterUrl,
-      userCredentials,
-      requestOptions
-    );
 
-    return data;
-  } catch (error) {
-    console.log(`Error during login - ${error.message}`);
+  if (savedUser.userName === username && savedUser.userPassword === password) {
+    const requestOptions = {
+      method: `POST`,
+      headers: {
+        "X-API-KEY": savedUser.apiKey || apiKey,
+        "Content-type": "application/json",
+      },
+    };
+    try {
+      const { data } = await axios.post(
+        apiRegisterUrl,
+        userCredentials,
+        requestOptions
+      );
+
+      return data;
+    } catch (error) {
+      console.log(`Error during login - ${error.message}`);
+    }
+  } else {
+    throw new Error("Wrong username or password!");
   }
 };
 

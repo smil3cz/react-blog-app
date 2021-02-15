@@ -55,12 +55,22 @@ class App extends React.Component {
       createdAt: this.state.userRegistration.createdAt,
       lastUsed: this.state.userRegistration.lastUsed,
     };
-    this.setState({
-      userLogin: userLoginData,
-      userRegistration: null,
-      incorrectCredentials: false,
-      userLogged: true,
-    });
+    if (localStorage.getItem("userLogin")) {
+      this.setState({
+        userLogin: JSON.parse(localStorage.getItem("userLogin")),
+        userRegistration: null,
+        incorrectCredentials: false,
+        userLogged: true,
+      });
+    } else {
+      localStorage.setItem("userLogin", JSON.stringify(userLoginData));
+      this.setState({
+        userLogin: userLoginData,
+        userRegistration: null,
+        incorrectCredentials: false,
+        userLogged: true,
+      });
+    }
   };
 
   render() {

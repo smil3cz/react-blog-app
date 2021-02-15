@@ -20,7 +20,7 @@ const DisplayArticles = ({ userLogin }) => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
     fetchArticles();
-  }, [articles.length]);
+  }, []);
 
   const renderArticles = () => {
     if (articles.length > 0) {
