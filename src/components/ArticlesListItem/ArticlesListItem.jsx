@@ -1,7 +1,8 @@
 import articleImage from "./test.jpg";
 import "./styles.scss";
 
-const ArticlesListItem = ({ articleData }) => {
+const ArticlesListItem = ({ articleData, userLogin }) => {
+  console.log(userLogin);
   return (
     <article className="article">
       <section className="article__image">
@@ -10,7 +11,7 @@ const ArticlesListItem = ({ articleData }) => {
       <section className="article__content">
         <h4 className="article__headline">{articleData.title}</h4>
         <div className="article__details">
-          <p className="article__author">{articleData.title}</p>
+          <p className="article__author">{userLogin.userName}</p>
           <p className="article__dot">&diams;</p>
           <p className="article__date">{articleData.createdAt}</p>
         </div>

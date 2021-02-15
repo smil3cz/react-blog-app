@@ -28,49 +28,37 @@ class App extends React.Component {
     this.setState({
       userRegistration: respond,
     });
+    localStorage.setItem("apiKey", respond.apiKey);
   };
 
   handleUserLogin = async ({ userName, userPassword }) => {
-    if (!this.state.userRegistration) {
-      return this.setState({ incorrectCredentials: true });
-    }
     const respond = await loginUser(
       userName,
       userPassword,
-      !this.state.userRegistration.apiKey
-        ? this.state.userLogin.apiKey
-        : this.state.userRegistration.apiKey
+      localStorage.getItem("apiKey")
     );
     if (!respond) {
       return this.setState({ incorrectCredentials: true });
     }
+
     const userLoginData = {
       userName,
       userPassword,
       accessToken: respond.access_token,
       expiresIn: respond.expires_in,
       tokenType: respond.token_type,
-      tenantId: this.state.userRegistration.tenantId,
       apiKey: this.state.userRegistration.apiKey,
+      tenantId: this.state.userRegistration.tenantId,
       createdAt: this.state.userRegistration.createdAt,
       lastUsed: this.state.userRegistration.lastUsed,
     };
-    if (localStorage.getItem("userLogin")) {
-      this.setState({
-        userLogin: JSON.parse(localStorage.getItem("userLogin")),
-        userRegistration: null,
-        incorrectCredentials: false,
-        userLogged: true,
-      });
-    } else {
-      localStorage.setItem("userLogin", JSON.stringify(userLoginData));
-      this.setState({
-        userLogin: userLoginData,
-        userRegistration: null,
-        incorrectCredentials: false,
-        userLogged: true,
-      });
-    }
+    localStorage.setItem("userLogin", JSON.stringify(userLoginData));
+    this.setState({
+      userLogin: userLoginData,
+      userRegistration: null,
+      incorrectCredentials: false,
+      userLogged: true,
+    });
   };
 
   render() {
