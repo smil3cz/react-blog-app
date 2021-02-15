@@ -13,6 +13,7 @@ const DisplayArticles = ({ userLogin }) => {
         userLogin.accessToken
       );
       localStorage.setItem("articles", JSON.stringify(data));
+      console.log(data);
       setArticles(data);
     }
   };
@@ -23,9 +24,14 @@ const DisplayArticles = ({ userLogin }) => {
   }, []);
 
   const renderArticles = () => {
-    if (articles.length > 0) {
-      return articles.map((article) => (
-        <ArticlesListItem key={article.articleId} articleData={article} />
+    console.log(articles.items);
+    if (articles.items.length > 0) {
+      return articles.items.map((article) => (
+        <ArticlesListItem
+          key={article.articleId}
+          articleData={article}
+          userData={userLogin}
+        />
       ));
     } else {
       return <p>Sry, no articles yet!</p>;
