@@ -18,15 +18,17 @@ const registerUser = async (username, password) => {
       userCredentials,
       requestOptions
     );
-
+    localStorage.setItem("apiKey", data.apiKey);
+    localStorage.setItem("userLogin", JSON.stringify(data));
     return data;
   } catch (error) {
     console.dir(`Error during registration - ${error.message}`);
   }
 };
 
-const loginUser = async (username, password, apiKey) => {
+const loginUser = async (username, password) => {
   const apiRegisterUrl = `https://fullstack.exercise.applifting.cz/login`;
+  const apiKey = localStorage.getItem("apiKey");
   const userCredentials = {
     Username: username,
     Password: password,
@@ -45,7 +47,7 @@ const loginUser = async (username, password, apiKey) => {
       userCredentials,
       requestOptions
     );
-
+    localStorage.setItem("accessToken", JSON.stringify(data));
     return data;
   } catch (error) {
     console.log(`Error during login - ${error.message}`);

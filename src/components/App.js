@@ -10,13 +10,12 @@ import AdminMyArticles from "./AdminMyArticles/AdminMyArticles";
 import DisplayArticles from "./DisplayArticles/DisplayArticles";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import { registerUser, loginUser } from "../api/apiUserHelper.js";
-import "./styles.scss";
+// import "./styles.scss";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userRegistration: {},
       userLogin: {},
       incorrectCredentials: false,
       userLogged: false,
@@ -24,38 +23,16 @@ class App extends React.Component {
   }
 
   handleUserRegistration = async ({ userName, userPassword }) => {
-    const respond = await registerUser(userName, userPassword);
-    this.setState({
-      userRegistration: respond,
-    });
-    localStorage.setItem("apiKey", respond.apiKey);
+    await registerUser(userName, userPassword);
   };
 
   handleUserLogin = async ({ userName, userPassword }) => {
-    const respond = await loginUser(
-      userName,
-      userPassword,
-      localStorage.getItem("apiKey")
-    );
-    if (!respond) {
+    const response = await loginUser(userName, userPassword);
+    if (!response) {
       return this.setState({ incorrectCredentials: true });
     }
-
-    const userLoginData = {
-      userName,
-      userPassword,
-      accessToken: respond.access_token,
-      expiresIn: respond.expires_in,
-      tokenType: respond.token_type,
-      apiKey: this.state.userRegistration.apiKey,
-      tenantId: this.state.userRegistration.tenantId,
-      createdAt: this.state.userRegistration.createdAt,
-      lastUsed: this.state.userRegistration.lastUsed,
-    };
-    localStorage.setItem("userLogin", JSON.stringify(userLoginData));
     this.setState({
-      userLogin: userLoginData,
-      userRegistration: null,
+      userLogin: JSON.parse(localStorage.getItem("userLogin")),
       incorrectCredentials: false,
       userLogged: true,
     });
@@ -71,7 +48,7 @@ class App extends React.Component {
               <Route path="/" exact>
                 <HomePage
                   userLogged={this.state.userLogged}
-                  userName={this.state.userLogin.userName}
+                  userName={this.state.userLogin.name}
                 />
               </Route>
               <ProtectedRoute
