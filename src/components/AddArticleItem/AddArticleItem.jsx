@@ -1,12 +1,15 @@
-import { saveNewArticle } from "..//../api/apiArticleHelper.js";
+import { useHistory } from "react-router-dom";
+import { saveNewArticle, getAllArticles } from "..//../api/apiArticleHelper.js";
 import FormButton from "../FormButton/FormButton";
 import FormInput from "../FormInput/FormInput.jsx";
 import FormLabel from "../FormLabel/FormLabel";
 import "./styles.scss";
 
-const AddArticleItem = ({ userLogin }) => {
+const AddArticleItem = () => {
+  let history = useHistory();
   const addNewArticle = async (event) => {
     event.preventDefault();
+    const user = JSON.parse(localStorage.getItem("userLogin"));
     const articleData = {
       title: event.target.title.value,
       perex:
@@ -14,9 +17,11 @@ const AddArticleItem = ({ userLogin }) => {
           ? event.target.input.value.slice(0)
           : event.target.input.value.slice(0, 250),
       content: event.target.input.value,
-      username: userLogin.userName,
+      username: user.name,
     };
-    await saveNewArticle(userLogin.apiKey, userLogin.accessToken, articleData);
+    await saveNewArticle(articleData);
+    await getAllArticles();
+    history.push("/articles");
   };
 
   return (
@@ -24,7 +29,7 @@ const AddArticleItem = ({ userLogin }) => {
       <header className="create-article__header">
         <h1>Create new article</h1>
         <FormButton color="primary" type="submit">
-          Publish Article
+          Publish Articles
         </FormButton>
       </header>
       <section className="create-article__content">

@@ -1,9 +1,11 @@
 @import "../../styles/abstracts/variables";
 
 .article {
-  width: 70%;
+  width: 90%;
   display: flex;
   gap: 2rem;
+  border-bottom: $border-btn-primary;
+  padding-bottom: 2rem;
 
   * {
     margin-top: 1rem;

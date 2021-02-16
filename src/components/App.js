@@ -55,7 +55,6 @@ class App extends React.Component {
                 path="/articles"
                 component={DisplayArticles}
                 userLogged={this.state.userLogged}
-                userLogin={this.state.userLogin}
               />
               <ProtectedRoute
                 path="/my-articles"
@@ -67,7 +66,6 @@ class App extends React.Component {
                 path="/create-article"
                 component={AddArticleItem}
                 userLogged={this.state.userLogged}
-                userLogin={this.state.userLogin}
               />
               <Route path="/about" component={AboutPage} />
               <Route path="/user">
