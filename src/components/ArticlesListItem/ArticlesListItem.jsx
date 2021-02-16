@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import articleImage from "./test.jpg";
 import "./styles.scss";
 
@@ -32,7 +33,12 @@ const ArticlesListItem = ({ articleData }) => {
         </div>
         <div className="article__perex">{articleData.perex}</div>
         <ul className="article__actions">
-          <li className="article__actions-read">Read whole article</li>
+          <Link
+            className="article__actions-read"
+            to={`/articles/${articleData.articleId}`}
+          >
+            <li>Read whole article</li>
+          </Link>
           <li className="article__actions-comments">4 comments</li>
         </ul>
       </section>

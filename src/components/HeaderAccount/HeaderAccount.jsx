@@ -10,7 +10,7 @@ const HeaderAccount = () => {
         <Link to="/my-articles" className="header__account-link">
           <li>My Articles</li>
         </Link>
-        <Link to="create-article" className="header__account-link">
+        <Link to="/create-article" className="header__account-link">
           <li>Create Articles</li>
         </Link>
       </ul>

@@ -10,6 +10,7 @@ import AdminMyArticles from "./AdminMyArticles/AdminMyArticles";
 import DisplayArticles from "./DisplayArticles/DisplayArticles";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import { registerUser, loginUser } from "../api/apiUserHelper.js";
+import ArticleItem from "./ArticleItem/ArticleItem";
 // import "./styles.scss";
 
 class App extends React.Component {
@@ -53,7 +54,13 @@ class App extends React.Component {
               </Route>
               <ProtectedRoute
                 path="/articles"
+                exact
                 component={DisplayArticles}
+                userLogged={this.state.userLogged}
+              />
+              <ProtectedRoute
+                path="/articles/:articleId"
+                component={ArticleItem}
                 userLogged={this.state.userLogged}
               />
               <ProtectedRoute
