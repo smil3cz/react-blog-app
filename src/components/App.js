@@ -7,11 +7,10 @@ import AboutPage from "./AboutPage/AboutPage";
 import HomePage from "./HomePage/HomePage";
 import AddArticleItem from "./AddArticleItem/AddArticleItem";
 import AdminMyArticles from "./AdminMyArticles/AdminMyArticles";
-import DisplayArticles from "./DisplayArticles/DisplayArticles";
+import DisplayArticlesList from "./DisplayArticlesList/DisplayArticlesList";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import { registerUser, loginUser } from "../api/apiUserHelper.js";
 import ArticleItem from "./ArticleItem/ArticleItem";
-// import "./styles.scss";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,16 +23,20 @@ class App extends React.Component {
   }
 
   handleUserRegistration = async ({ userName, userPassword }) => {
-    await registerUser(userName, userPassword);
+    const response = await registerUser(userName, userPassword);
+    this.setState({ userLogin: response });
   };
 
   handleUserLogin = async ({ userName, userPassword }) => {
     const response = await loginUser(userName, userPassword);
-    if (!response) {
+    if (!localStorage.getItem("accessToken") || !response) {
       return this.setState({ incorrectCredentials: true });
     }
     this.setState({
-      userLogin: JSON.parse(localStorage.getItem("userLogin")),
+      userLogin: {
+        ...JSON.parse(localStorage.getItem("userRegistration")),
+        ...JSON.parse(localStorage.getItem("accessToken")),
+      },
       incorrectCredentials: false,
       userLogged: true,
     });
@@ -55,13 +58,15 @@ class App extends React.Component {
               <ProtectedRoute
                 path="/articles"
                 exact
-                component={DisplayArticles}
+                component={DisplayArticlesList}
                 userLogged={this.state.userLogged}
+                userLogin={this.state.userLogin}
               />
               <ProtectedRoute
                 path="/articles/:articleId"
                 component={ArticleItem}
                 userLogged={this.state.userLogged}
+                userLogin={this.state.userLogin}
               />
               <ProtectedRoute
                 path="/my-articles"

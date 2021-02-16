@@ -1,20 +1,19 @@
 import axios from "axios";
 
-const getAllArticles = async () => {
+const getAllArticles = async (acessKey) => {
   const apiArticleUrl = "https://fullstack.exercise.applifting.cz/articles";
-  const accessToken = JSON.parse(localStorage.getItem("accessToken"));
   const options = {
     method: "GET",
     headers: {
       "X-API-KEY": localStorage.getItem("apiKey"),
-      Authorization: accessToken.access_token,
+      Authorization: acessKey,
       "Content-type": "application/json",
     },
   };
 
   try {
     const { data } = await axios.get(apiArticleUrl, options);
-    localStorage.setItem("articles", JSON.stringify(data));
+    return data;
   } catch (error) {
     console.log(`Error fetching data - ${error.message}`);
   }
@@ -33,12 +32,29 @@ const saveNewArticle = async (articleData) => {
   };
 
   try {
-    const { data } = await axios.post(apiArticleUrl, articleData, options);
-    console.log("API HELPER", data);
-    return data;
+    await axios.post(apiArticleUrl, articleData, options);
   } catch (error) {
     console.log(`Error fetching data - ${error.message}`);
   }
 };
 
-export { getAllArticles, saveNewArticle };
+const getArticleDetail = async (articleId) => {
+  const apiArticleUrl = `https://fullstack.exercise.applifting.cz/articles/${articleId}`;
+  const options = {
+    method: "GET",
+    headers: {
+      "X-API-KEY": localStorage.getItem("apiKey"),
+      "Content-type": "application/json",
+    },
+  };
+
+  try {
+    const { data } = await axios.get(apiArticleUrl, options);
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new Error(error);
+  }
+};
+
+export { getAllArticles, saveNewArticle, getArticleDetail };

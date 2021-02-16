@@ -9,7 +9,6 @@ const AddArticleItem = () => {
   let history = useHistory();
   const addNewArticle = async (event) => {
     event.preventDefault();
-    const user = JSON.parse(localStorage.getItem("userLogin"));
     const articleData = {
       title: event.target.title.value,
       perex:
@@ -17,7 +16,6 @@ const AddArticleItem = () => {
           ? event.target.input.value.slice(0)
           : event.target.input.value.slice(0, 250),
       content: event.target.input.value,
-      username: user.name,
     };
 
     await saveNewArticle(articleData);

@@ -19,7 +19,7 @@ const registerUser = async (username, password) => {
       requestOptions
     );
     localStorage.setItem("apiKey", data.apiKey);
-    localStorage.setItem("userLogin", JSON.stringify(data));
+    localStorage.setItem("userRegistration", JSON.stringify(data));
     return data;
   } catch (error) {
     console.dir(`Error during registration - ${error.message}`);
