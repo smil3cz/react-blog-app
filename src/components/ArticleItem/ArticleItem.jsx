@@ -19,7 +19,7 @@ const ArticleItem = (props) => {
   }, []);
 
   const articleTime = () => {
-    const now = new Date(articleDetail.createdAt);
+    const now = new Date();
     const options = {
       day: "numeric",
       month: "long",
@@ -37,6 +37,7 @@ const ArticleItem = (props) => {
           <h1>{articleDetail.title}</h1>
           <div className="article-detail__informations">
             <p className="article-detail__author">{props.userLogin.name}</p>
+            <p className="article-detail__divider">&diams;</p>
             <p className="article-detail__date">{articleTime()}</p>
           </div>
         </header>
