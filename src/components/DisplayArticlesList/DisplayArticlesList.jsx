@@ -13,9 +13,9 @@ const DisplayArticlesList = ({ userLogin }) => {
   }, []);
 
   const loadData = async () => {
-    const response = await getAllArticles(userLogin.access_token);
-    setPagination(response.pagination);
-    setArticles(response.items);
+    const articleList = await getAllArticles(userLogin.access_token);
+    setPagination(articleList.pagination);
+    setArticles(articleList.items);
   };
 
   if (!articles) {

@@ -50,6 +50,7 @@ const getArticleDetail = async (articleId) => {
 
   try {
     const { data } = await axios.get(apiArticleUrl, options);
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
