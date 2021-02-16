@@ -1,16 +1,25 @@
 import articleImage from "./test.jpg";
+import { getArticleDetail } from "../../api/apiArticleHelper";
+import { useEffect, useState } from "react";
+import "./styles.scss";
 
 const ArticleItem = (props) => {
-  console.log(props.match.params.articleId);
-  const articlesFromStorage = JSON.parse(localStorage.getItem("articles"));
-  const [articleData] = articlesFromStorage.items.filter(
-    (article) => article.articleId === props.match.params.articleId
-  );
-  console.log(articleData);
-  const { name: userName } = JSON.parse(localStorage.getItem("userLogin"));
+  const [articleComments, setArticleComments] = useState([]);
+  const [articleDetail, setArticleDetail] = useState({});
+  const id = props.match.params.articleId;
+
+  const loadArticleData = async () => {
+    const response = await getArticleDetail(id);
+    setArticleComments(response.comments);
+    setArticleDetail(response);
+  };
+
+  useEffect(() => {
+    loadArticleData();
+  }, []);
 
   const articleTime = () => {
-    const now = new Date(articleData.createdAt);
+    const now = new Date(articleDetail.createdAt);
     const options = {
       day: "numeric",
       month: "long",
@@ -25,14 +34,14 @@ const ArticleItem = (props) => {
     <article className="article-detail">
       <section className="article-detail__detail">
         <header className="article-detail__header">
-          <h1>{articleData.title}</h1>
+          <h1>{articleDetail.title}</h1>
           <div className="article-detail__informations">
-            <p className="article-detail__author">{userName}</p>
+            <p className="article-detail__author">{props.userLogin.name}</p>
             <p className="article-detail__date">{articleTime()}</p>
           </div>
         </header>
         <img src={articleImage} alt="Article Image" />
-        <div className="article-detail__text">PLACEHOLDER</div>
+        <div className="article-detail__text">{articleDetail.content}</div>
       </section>
       <section className="article-detail__sidebar"></section>
     </article>

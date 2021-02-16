@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import articleImage from "./test.jpg";
 import "./styles.scss";
 
-const ArticlesListItem = ({ articleData }) => {
-  const userData = JSON.parse(localStorage.getItem("userLogin"));
+const ArticlesListItem = ({ articleData, userLogin }) => {
   const articleTime = () => {
     const now = new Date(articleData.createdAt);
     const options = {
@@ -18,7 +17,6 @@ const ArticlesListItem = ({ articleData }) => {
     const locale = navigator.language;
     return new Intl.DateTimeFormat(locale, options).format(now);
   };
-
   return (
     <article className="article">
       <section className="article__image">
@@ -27,7 +25,7 @@ const ArticlesListItem = ({ articleData }) => {
       <section className="article__content">
         <h4 className="article__headline">{articleData.title}</h4>
         <div className="article__details">
-          <p className="article__author">{userData.name}</p>
+          <p className="article__author">{userLogin.name}</p>
           <p className="article__dot">&diams;</p>
           <p className="article__date">{articleTime()}</p>
         </div>
