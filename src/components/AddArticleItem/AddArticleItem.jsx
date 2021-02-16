@@ -19,6 +19,7 @@ const AddArticleItem = () => {
       content: event.target.input.value,
       username: user.name,
     };
+
     await saveNewArticle(articleData);
     await getAllArticles();
     history.push("/articles");

@@ -6,9 +6,12 @@
   gap: 2rem;
   border-bottom: $border-btn-primary;
   padding-bottom: 2rem;
+  padding-top: 2rem;
 
-  * {
-    margin-top: 1rem;
+  &__no-article {
+    color: $link-alert;
+    font-size: 2rem;
+    margin-top: 2rem;
   }
 
   &__image {
@@ -19,6 +22,9 @@
   }
   &__content {
     width: 66%;
+    & > * {
+      margin-top: 1rem;
+    }
   }
 
   &__perex {
@@ -36,6 +42,7 @@
   &__actions {
     list-style: none;
     display: flex;
+    align-items: center;
 
     & > li {
       margin-left: 1.5rem;
@@ -46,9 +53,18 @@
   }
 
   &__actions {
+    padding-top: 2rem;
     font-size: 1.4rem;
+    a {
+      text-decoration: none;
+      margin-left: 2rem;
+    }
+
     &-read {
       color: $link-primary;
+      &:hover {
+        color: $text-secondary;
+      }
     }
     &-comments {
       color: $text-secondary;

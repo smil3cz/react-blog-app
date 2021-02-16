@@ -24,7 +24,6 @@ const saveNewArticle = async (articleData) => {
   const apiArticleUrl = "https://fullstack.exercise.applifting.cz/articles";
   const accessToken = JSON.parse(localStorage.getItem("accessToken"));
   const options = {
-    required: "true",
     method: "POST",
     headers: {
       "X-API-KEY": localStorage.getItem("apiKey"),
@@ -35,6 +34,7 @@ const saveNewArticle = async (articleData) => {
 
   try {
     const { data } = await axios.post(apiArticleUrl, articleData, options);
+    console.log("API HELPER", data);
     return data;
   } catch (error) {
     console.log(`Error fetching data - ${error.message}`);

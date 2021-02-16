@@ -10,12 +10,15 @@ const DisplayArticles = () => {
 
   const renderArticles = () => {
     const articles = JSON.parse(localStorage.getItem("articles"));
+    if (!articles) {
+      return (
+        <p className="article__no-article">Sry, there is no article to read!</p>
+      );
+    }
     if (articles.items.length > 0) {
       return articles.items.map((article) => (
         <ArticlesListItem key={article.articleId} articleData={article} />
       ));
-    } else {
-      return <p>Sry, there is no article to read!</p>;
     }
   };
   return (
