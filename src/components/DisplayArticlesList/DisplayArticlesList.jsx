@@ -13,7 +13,7 @@ const DisplayArticlesList = ({ userLogin }) => {
   }, []);
 
   const loadData = async () => {
-    const articleList = await getAllArticles(userLogin.access_token);
+    const articleList = await getAllArticles();
     setPagination(articleList.pagination);
     setArticles(articleList.items);
   };
