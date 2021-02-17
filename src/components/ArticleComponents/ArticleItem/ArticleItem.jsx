@@ -1,27 +1,20 @@
 import articleImage from "./test.jpg";
 import { getArticleDetail } from "../../../api/apiArticleHelper";
 import { useEffect, useState } from "react";
-import "./styles.scss";
 import RelatedArticles from "../RelatedArticles/RelatedArticles";
 import ArticleItemComments from "../ArticleItemComments/ArticleItemComments";
+import "./styles.scss";
 
 const ArticleItem = (props) => {
-  const [articleComments, setArticleComments] = useState([]);
   const [articleDetail, setArticleDetail] = useState({});
   const id = props.match.params.articleId;
 
   useEffect(() => {
     loadArticleData();
-  }, []);
-
-  // useEffect(() => {
-  //   loadArticleData();
-  // }, [id]);
+  }, [id]);
 
   const loadArticleData = async () => {
     const response = await getArticleDetail(id);
-    console.log(response);
-    setArticleComments(response.comments);
     setArticleDetail(response);
   };
 
@@ -50,8 +43,12 @@ const ArticleItem = (props) => {
         </header>
         <img src={articleImage} alt="Article Image" />
         <div className="article-detail__text">{articleDetail.content}</div>
-        {/* <ArticleItemComments articleDetail={articleDetail} /> */}
-        {articleDetail && <ArticleItemComments articleDetail={articleDetail} />}
+        {articleDetail.hasOwnProperty("comments") && (
+          <ArticleItemComments
+            articleDetail={articleDetail}
+            userName={props.userLogin.name}
+          />
+        )}
       </section>
       <section className="article-detail__sidebar">
         <RelatedArticles currentId={id} />
