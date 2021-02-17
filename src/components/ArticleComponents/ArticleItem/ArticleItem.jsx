@@ -44,7 +44,10 @@ const ArticleItem = (props) => {
         <img src={articleImage} alt="Article Image" />
         <div className="article-detail__text">{articleDetail.content}</div>
         {articleDetail.hasOwnProperty("comments") && (
-          <ArticleItemComments articleDetail={articleDetail} />
+          <ArticleItemComments
+            articleDetail={articleDetail}
+            userName={props.userLogin.name}
+          />
         )}
       </section>
       <section className="article-detail__sidebar">

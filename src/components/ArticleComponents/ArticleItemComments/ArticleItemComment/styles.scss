@@ -1,0 +1,47 @@
+@import "../../../../styles/abstracts/variables";
+
+.comment-container {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  &__avatar-section {
+    img {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+
+  &__header {
+    display: flex;
+    font-size: 1.6rem;
+  }
+
+  &__header-name {
+    font-weight: 700;
+    margin-right: 2rem;
+  }
+
+  &__header-time {
+    color: $text-secondary;
+  }
+
+  &__message {
+    font-size: 1.6rem;
+    margin: 2rem 0;
+  }
+
+  &__votes {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    & > * {
+      margin-right: 1rem;
+    }
+  }
+
+  &__up,
+  &__down {
+    width: 2rem;
+    height: 2rem;
+  }
+}
