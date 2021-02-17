@@ -5,12 +5,12 @@ import Footer from "./Footer/Footer";
 import UserForm from "./UserForm/UserForm";
 import AboutPage from "./AboutPage/AboutPage";
 import HomePage from "./HomePage/HomePage";
-import AddArticleItem from "./AddArticleItem/AddArticleItem";
+import AddArticleItem from "./ArticleComponents/AddArticleItem/AddArticleItem";
 import AdminMyArticles from "./AdminMyArticles/AdminMyArticles";
-import DisplayArticlesList from "./DisplayArticlesList/DisplayArticlesList";
+import DisplayArticlesList from "./ArticleComponents/DisplayArticlesList/DisplayArticlesList";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 import { registerUser, loginUser } from "../api/apiUserHelper.js";
-import ArticleItem from "./ArticleItem/ArticleItem";
+import ArticleItem from "./ArticleComponents/ArticleItem/ArticleItem";
 
 class App extends React.Component {
   constructor(props) {

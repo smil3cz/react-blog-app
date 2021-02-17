@@ -1,8 +1,8 @@
-import HeaderAccount from "../HeaderAccount/HeaderAccount";
-import HeaderLogo from "../HeaderLogo/HeaderLogo";
+import HeaderAccount from "./HeaderAccount/HeaderAccount";
+import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import { Link } from "react-router-dom";
 import "./styles.scss";
-import "../HeaderLogo/styles.scss";
+import "./HeaderLogo/styles.scss";
 
 const Header = ({ userData }) => {
   return (

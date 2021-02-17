@@ -1,6 +1,6 @@
 import React from "react";
-import LoginForm from "../LoginForm/LoginForm";
-import RegisterForm from "../RegisterForm/RegisterForm";
+import LoginForm from "./LoginForm/LoginForm";
+import RegisterForm from "./RegisterForm/RegisterForm";
 import "./styles.scss";
 class UserForm extends React.Component {
   constructor(props) {
