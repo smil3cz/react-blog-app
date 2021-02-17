@@ -1,0 +1,78 @@
+@import "../../../styles/abstracts/variables";
+
+.article {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  border-bottom: $border-btn-primary;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+
+  &__no-article {
+    color: $link-alert;
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+
+  &__image {
+    width: 40%;
+    img {
+      width: 100%;
+    }
+  }
+  &__content {
+    width: 66%;
+    & > * {
+      margin-top: 1rem;
+    }
+  }
+
+  &__headline {
+    margin-top: 0;
+  }
+
+  &__perex {
+    font-size: 1.6rem;
+  }
+
+  &__details {
+    font-size: 1.4rem;
+    display: flex;
+    color: $text-secondary;
+    p:not(:last-of-type) {
+      margin-right: 1.5rem;
+    }
+  }
+  &__actions {
+    list-style: none;
+    display: flex;
+    align-items: center;
+
+    & > li {
+      margin-left: 1.5rem;
+    }
+    li:not(:last-of-type) {
+      margin-right: 1.5rem;
+    }
+  }
+
+  &__actions {
+    padding-top: 2rem;
+    font-size: 1.4rem;
+    a {
+      text-decoration: none;
+      margin-left: 2rem;
+    }
+
+    &-read {
+      color: $link-primary;
+      &:hover {
+        color: $text-secondary;
+      }
+    }
+    &-comments {
+      color: $text-secondary;
+    }
+  }
+}
