@@ -1,12 +1,13 @@
 import axios from "axios";
 
-const getAllArticles = async (acessKey) => {
+const getAllArticles = async () => {
   const apiArticleUrl = "https://fullstack.exercise.applifting.cz/articles";
+  const accessToken = JSON.parse(localStorage.getItem("accessToken"));
   const options = {
     method: "GET",
     headers: {
       "X-API-KEY": localStorage.getItem("apiKey"),
-      Authorization: acessKey,
+      Authorization: accessToken.access_token,
       "Content-type": "application/json",
     },
   };
@@ -50,7 +51,6 @@ const getArticleDetail = async (articleId) => {
 
   try {
     const { data } = await axios.get(apiArticleUrl, options);
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

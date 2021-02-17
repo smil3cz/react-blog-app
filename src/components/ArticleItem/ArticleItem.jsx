@@ -2,6 +2,7 @@ import articleImage from "./test.jpg";
 import { getArticleDetail } from "../../api/apiArticleHelper";
 import { useEffect, useState } from "react";
 import "./styles.scss";
+import RelatedArticles from "../RelatedArticles/RelatedArticles";
 
 const ArticleItem = (props) => {
   const [articleComments, setArticleComments] = useState([]);
@@ -16,7 +17,7 @@ const ArticleItem = (props) => {
 
   useEffect(() => {
     loadArticleData();
-  }, []);
+  }, [articleDetail]);
 
   const articleTime = () => {
     const now = new Date();
@@ -44,7 +45,9 @@ const ArticleItem = (props) => {
         <img src={articleImage} alt="Article Image" />
         <div className="article-detail__text">{articleDetail.content}</div>
       </section>
-      <section className="article-detail__sidebar"></section>
+      <section className="article-detail__sidebar">
+        <RelatedArticles currentId={articleDetail.articleId} />
+      </section>
     </article>
   );
 };
