@@ -2,14 +2,13 @@ import AvatarItem from "../../AvatarItem/AvatarItem";
 import FormInput from "../../FormComponents/FormInput/FormInput";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 
-const ArticleItemComments = (props) => {
-  console.log(props);
-  if (!props) {
+const ArticleItemComments = ({ articleDetail }) => {
+  if (!articleDetail) {
     return <LoadingSpinner />;
-  } else if (props) {
+  } else if (articleDetail) {
     return (
       <div className="article-detail__comments">
-        <h4>{`Comments (${props?.articleDetail?.comments.length})`}</h4>
+        <h4>{`Comments (${articleDetail.comments.length})`}</h4>
         <form className="article-detail__form">
           <AvatarItem />
           <FormInput />
