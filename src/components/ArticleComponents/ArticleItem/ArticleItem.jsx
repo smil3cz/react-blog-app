@@ -18,7 +18,7 @@ const ArticleItem = (props) => {
   useEffect(() => {
     loadArticleData();
     setIsVoted(false);
-  }, [id, isVoted, articleDetail.comments.length]);
+  }, [id, isVoted]);
 
   const loadArticleData = async () => {
     const response = await getArticleDetail(id);
@@ -38,7 +38,6 @@ const ArticleItem = (props) => {
   };
 
   const votingSystem = (voteType, commentId) => {
-    console.log("Vote TYPE", voteType);
     if (voteType === "up") {
       addVote(commentId);
       setIsVoted(true);
