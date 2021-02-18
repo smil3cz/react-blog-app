@@ -18,7 +18,7 @@ const ArticleItem = (props) => {
   useEffect(() => {
     loadArticleData();
     setIsVoted(false);
-  }, [id, isVoted]);
+  }, [id, isVoted, articleDetail]);
 
   const loadArticleData = async () => {
     const response = await getArticleDetail(id);
