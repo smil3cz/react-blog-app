@@ -8,6 +8,9 @@
   border-bottom: $border-btn-primary;
   padding-bottom: 2rem;
   padding-top: 2rem;
+  &:last-of-type {
+    border: none;
+  }
 
   &__no-article {
     color: $link-alert;
