@@ -55,6 +55,9 @@ class App extends React.Component {
                   userName={this.state.userLogin.name}
                 />
               </Route>
+              {/* <Route path="/articles" exact>
+                <DisplayArticlesList userLogged={this.state.userLogged}/>
+              </Route> */}
               <ProtectedRoute
                 path="/articles"
                 exact

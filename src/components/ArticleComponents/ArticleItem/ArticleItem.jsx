@@ -1,5 +1,6 @@
 import articleImage from "./test.jpg";
 import {
+  addNewComment,
   addVote,
   getArticleDetail,
   substractVote,
@@ -17,7 +18,7 @@ const ArticleItem = (props) => {
   useEffect(() => {
     loadArticleData();
     setIsVoted(false);
-  }, [id, isVoted]);
+  }, [id, isVoted, articleDetail]);
 
   const loadArticleData = async () => {
     const response = await getArticleDetail(id);
@@ -25,11 +26,12 @@ const ArticleItem = (props) => {
   };
 
   const articleTime = () => {
-    const now = new Date();
+    const now = new Date(articleDetail.createdAt).getTime();
     const options = {
       day: "numeric",
       month: "long",
       year: "numeric",
+      weekday: "long",
     };
 
     const locale = navigator.language;
@@ -37,7 +39,6 @@ const ArticleItem = (props) => {
   };
 
   const votingSystem = (voteType, commentId) => {
-    console.log(voteType);
     if (voteType === "up") {
       addVote(commentId);
       setIsVoted(true);
@@ -47,15 +48,24 @@ const ArticleItem = (props) => {
     }
   };
 
+  const addComment = (userInput) => {
+    addNewComment({
+      articleId: articleDetail.articleId,
+      author: props.userLogin.name,
+      content: userInput,
+    });
+  };
+
   return (
     <article className="article-detail">
       <section className="article-detail__detail">
         <header className="article-detail__header">
           <h1>{articleDetail.title}</h1>
           <div className="article-detail__informations">
-            <p className="article-detail__author">{props.userLogin.name}</p>
-            <p className="article-detail__divider">&diams;</p>
-            <p className="article-detail__date">{articleTime()}</p>
+            <p className="article-detail__divider">Published</p>
+            <p className="article-detail__date">
+              {articleDetail.hasOwnProperty("createdAt") && articleTime()}
+            </p>
           </div>
         </header>
         <img src={articleImage} alt="Article Image" />
@@ -63,8 +73,8 @@ const ArticleItem = (props) => {
         {articleDetail.hasOwnProperty("comments") && (
           <ArticleItemComments
             articleDetail={articleDetail}
-            userName={props.userLogin.name}
             votingSystem={votingSystem}
+            addComment={addComment}
           />
         )}
       </section>
