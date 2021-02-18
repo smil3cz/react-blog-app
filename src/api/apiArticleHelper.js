@@ -58,10 +58,28 @@ const getArticleDetail = async (articleId) => {
   }
 };
 
+const addNewComment = async (commentData) => {
+  const apiArticleUrl = `https://fullstack.exercise.applifting.cz/comments`;
+  const options = {
+    method: "POST",
+    headers: {
+      "X-API-KEY": localStorage.getItem("apiKey"),
+      "Content-type": "application/json",
+    },
+  };
+
+  try {
+    console.log(commentData);
+    await axios.post(apiArticleUrl, commentData, options);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const addVote = async (commentId) => {
   const apiCommentsUpUrl = `https://fullstack.exercise.applifting.cz/comments/${commentId}/vote/up`;
   const options = {
-    method: "GET",
+    method: "POST",
     headers: {
       "X-API-KEY": localStorage.getItem("apiKey"),
       "Content-type": "application/json",
@@ -80,7 +98,7 @@ const addVote = async (commentId) => {
 const substractVote = async (commentId) => {
   const apiCommentsUpUrl = `https://fullstack.exercise.applifting.cz/comments/${commentId}/vote/down`;
   const options = {
-    method: "GET",
+    method: "POST",
     headers: {
       "X-API-KEY": localStorage.getItem("apiKey"),
       "Content-type": "application/json",
@@ -102,4 +120,5 @@ export {
   getArticleDetail,
   addVote,
   substractVote,
+  addNewComment,
 };
