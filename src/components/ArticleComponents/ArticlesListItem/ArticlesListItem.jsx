@@ -16,7 +16,8 @@ const ArticlesListItem = ({ articleData, userLogin }) => {
   };
 
   const articleTime = () => {
-    const now = new Date(articleData.createdAt);
+    console.log(articleData.createdAt);
+    const now = new Date();
     const options = {
       hour: "numeric",
       minute: "numeric",
@@ -41,7 +42,7 @@ const ArticlesListItem = ({ articleData, userLogin }) => {
         <section className="article__content">
           <h4 className="article__headline">{articleData.title}</h4>
           <div className="article__details">
-            <p className="article__author">{userLogin.name}</p>
+            {/* <p className="article__author">{userLogin.name}</p> */}
             <p className="article__dot">&diams;</p>
             <p className="article__date">{articleTime()}</p>
           </div>
