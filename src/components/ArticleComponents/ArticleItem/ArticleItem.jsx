@@ -1,29 +1,22 @@
 import articleImage from "./test.jpg";
-import {
-  addNewComment,
-  addVote,
-  getArticleDetail,
-  substractVote,
-} from "../../../api/apiArticleHelper";
+import { getArticleDetail } from "../../../api/apiArticleHelper";
 import { useEffect, useState } from "react";
 import RelatedArticles from "../RelatedArticles/RelatedArticles";
 import ArticleItemComments from "../ArticleItemComments/ArticleItemComments";
 import "./styles.scss";
 
 const ArticleItem = (props) => {
-  const [articleDetail, setArticleDetail] = useState({});
-  const [isVoted, setIsVoted] = useState(false);
   const id = props.match.params.articleId;
-
-  useEffect(() => {
-    loadArticleData();
-    setIsVoted(false);
-  }, [id, isVoted, articleDetail]);
+  const [articleDetail, setArticleDetail] = useState({});
 
   const loadArticleData = async () => {
     const response = await getArticleDetail(id);
     setArticleDetail(response);
   };
+
+  useEffect(() => {
+    loadArticleData();
+  }, [id]);
 
   const articleTime = () => {
     const now = new Date(articleDetail.createdAt).getTime();
@@ -36,24 +29,6 @@ const ArticleItem = (props) => {
 
     const locale = navigator.language;
     return new Intl.DateTimeFormat(locale, options).format(now);
-  };
-
-  const votingSystem = (voteType, commentId) => {
-    if (voteType === "up") {
-      addVote(commentId);
-      setIsVoted(true);
-    } else if (voteType === "down") {
-      substractVote(commentId);
-      setIsVoted(true);
-    }
-  };
-
-  const addComment = (userInput) => {
-    addNewComment({
-      articleId: articleDetail.articleId,
-      author: props.userLogin.name,
-      content: userInput,
-    });
   };
 
   return (
@@ -72,9 +47,9 @@ const ArticleItem = (props) => {
         <div className="article-detail__text">{articleDetail.content}</div>
         {articleDetail.hasOwnProperty("comments") && (
           <ArticleItemComments
-            articleDetail={articleDetail}
-            votingSystem={votingSystem}
-            addComment={addComment}
+            comments={articleDetail.comments}
+            userName={props.userLogin.name}
+            currentId={id}
           />
         )}
       </section>

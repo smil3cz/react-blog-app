@@ -69,8 +69,8 @@ const addNewComment = async (commentData) => {
   };
 
   try {
-    console.log(commentData);
-    await axios.post(apiArticleUrl, commentData, options);
+    const { data } = await axios.post(apiArticleUrl, commentData, options);
+    return data;
   } catch (error) {
     console.log(error);
   }
