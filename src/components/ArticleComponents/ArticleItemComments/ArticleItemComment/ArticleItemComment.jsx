@@ -4,7 +4,11 @@ import IconDown from "./svg/down.svg";
 import IconUp from "./svg/up.svg";
 import "./styles.scss";
 
-const ArticleItemComment = ({ commentData }) => {
+const ArticleItemComment = ({ commentData, votingSystem }) => {
+  const vote = (e) => {
+    votingSystem(e.target.id, commentData.commentId);
+  };
+
   return (
     <div className="comment-container">
       <div className="comment-container__avatar-section">
@@ -21,12 +25,26 @@ const ArticleItemComment = ({ commentData }) => {
           <p>{commentData.content}</p>
         </div>
         <div className="comment-container__votes">
-          <p className="comment-container__counter">{commentData.score}</p>
+          <p className="comment-container__counter">
+            {commentData.score > 0
+              ? `+${commentData.score}`
+              : commentData.score}
+          </p>
           <div>
-            <img className="comment-container__up" src={IconUp} />
+            <img
+              onClick={(e) => vote(e)}
+              className="comment-container__up"
+              id="up"
+              src={IconUp}
+            />
           </div>
           <div>
-            <img className="comment-container__down" src={IconDown} />
+            <img
+              onClick={(e) => vote(e)}
+              className="comment-container__down"
+              id="down"
+              src={IconDown}
+            />
           </div>
         </div>
       </div>

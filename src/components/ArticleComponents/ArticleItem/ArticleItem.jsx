@@ -1,5 +1,9 @@
 import articleImage from "./test.jpg";
-import { getArticleDetail } from "../../../api/apiArticleHelper";
+import {
+  addVote,
+  getArticleDetail,
+  substractVote,
+} from "../../../api/apiArticleHelper";
 import { useEffect, useState } from "react";
 import RelatedArticles from "../RelatedArticles/RelatedArticles";
 import ArticleItemComments from "../ArticleItemComments/ArticleItemComments";
@@ -7,11 +11,13 @@ import "./styles.scss";
 
 const ArticleItem = (props) => {
   const [articleDetail, setArticleDetail] = useState({});
+  const [isVoted, setIsVoted] = useState(false);
   const id = props.match.params.articleId;
 
   useEffect(() => {
     loadArticleData();
-  }, [id]);
+    setIsVoted(false);
+  }, [id, isVoted]);
 
   const loadArticleData = async () => {
     const response = await getArticleDetail(id);
@@ -28,6 +34,17 @@ const ArticleItem = (props) => {
 
     const locale = navigator.language;
     return new Intl.DateTimeFormat(locale, options).format(now);
+  };
+
+  const votingSystem = (voteType, commentId) => {
+    console.log(voteType);
+    if (voteType === "up") {
+      addVote(commentId);
+      setIsVoted(true);
+    } else if (voteType === "down") {
+      substractVote(commentId);
+      setIsVoted(true);
+    }
   };
 
   return (
@@ -47,6 +64,7 @@ const ArticleItem = (props) => {
           <ArticleItemComments
             articleDetail={articleDetail}
             userName={props.userLogin.name}
+            votingSystem={votingSystem}
           />
         )}
       </section>
