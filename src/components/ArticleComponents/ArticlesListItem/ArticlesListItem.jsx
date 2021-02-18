@@ -16,7 +16,6 @@ const ArticlesListItem = ({ articleData, userLogin }) => {
   };
 
   const articleTime = () => {
-    console.log(articleData.createdAt);
     const now = new Date();
     const options = {
       hour: "numeric",
