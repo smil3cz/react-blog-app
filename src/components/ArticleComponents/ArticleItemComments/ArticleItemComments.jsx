@@ -3,7 +3,7 @@ import FormInput from "../../FormComponents/FormInput/FormInput";
 import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 import ArticleItemComment from "./ArticleItemComment/ArticleItemComment";
 
-const ArticleItemComments = ({ articleDetail }) => {
+const ArticleItemComments = ({ articleDetail, votingSystem }) => {
   if (!articleDetail) {
     return <LoadingSpinner />;
   } else if (articleDetail) {
@@ -19,7 +19,11 @@ const ArticleItemComments = ({ articleDetail }) => {
         {/* Container for user comments */}
         <div className="article-detail__comments-all">
           {articleDetail.comments.map((comment) => (
-            <ArticleItemComment key={comment.commentId} commentData={comment} />
+            <ArticleItemComment
+              key={comment.commentId}
+              commentData={comment}
+              votingSystem={votingSystem}
+            />
           ))}
         </div>
       </div>
