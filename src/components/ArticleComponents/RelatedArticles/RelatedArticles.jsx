@@ -19,9 +19,15 @@ const RelatedArticles = ({ currentId }) => {
     const filteredArticles = articles.filter(
       (article) => article.articleId !== currentId
     );
-    return filteredArticles.map((article) => (
-      <RelatedArticleItem key={article.articleId} articleData={article} />
-    ));
+    return filteredArticles.map((article, index) => {
+      if (index === 4) {
+        return;
+      } else {
+        return (
+          <RelatedArticleItem key={article.articleId} articleData={article} />
+        );
+      }
+    });
   };
 
   if (!currentId || !articles) {
