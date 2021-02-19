@@ -4,14 +4,16 @@ import { useEffect, useState } from "react";
 import RelatedArticles from "../RelatedArticles/RelatedArticles";
 import ArticleItemComments from "../ArticleItemComments/ArticleItemComments";
 import "./styles.scss";
+import { useParams } from "react-router-dom";
+import UserOffline from "../../UserOffline/UserOffline";
 
 const ArticleItem = (props) => {
-  const id = props.match.params.articleId;
   const [articleDetail, setArticleDetail] = useState({});
   const [image, setImage] = useState(null);
+  let { articleId } = useParams();
 
   const loadArticleData = async () => {
-    const response = await getArticleDetail(id);
+    const response = await getArticleDetail(articleId);
     setArticleDetail(response);
     if (response.imageId === null) return;
     const imageDownload = await downloadImage(response.imageId);
@@ -20,7 +22,7 @@ const ArticleItem = (props) => {
 
   useEffect(() => {
     loadArticleData();
-  }, [id]);
+  }, [articleId]);
 
   const articleTime = () => {
     const now = new Date(articleDetail.createdAt).getTime();
@@ -33,6 +35,20 @@ const ArticleItem = (props) => {
 
     const locale = navigator.language;
     return new Intl.DateTimeFormat(locale, options).format(now);
+  };
+
+  const renderComments = () => {
+    if (props.userLogin.name && articleDetail.hasOwnProperty("comments")) {
+      return (
+        <ArticleItemComments
+          comments={articleDetail.comments}
+          userName={props.userLogin.name}
+          currentId={articleId}
+        />
+      );
+    } else {
+      return <UserOffline />;
+    }
   };
 
   return (
@@ -52,16 +68,17 @@ const ArticleItem = (props) => {
           alt="Article Image"
         />
         <div className="article-detail__text">{articleDetail.content}</div>
-        {articleDetail.hasOwnProperty("comments") && (
+        {renderComments()}
+        {/* {articleDetail.hasOwnProperty("comments") && props.userLogin.name && (
           <ArticleItemComments
             comments={articleDetail.comments}
             userName={props.userLogin.name}
-            currentId={id}
+            currentId={articleId}
           />
-        )}
+        )} */}
       </section>
       <section className="article-detail__sidebar">
-        <RelatedArticles currentId={id} />
+        <RelatedArticles currentId={articleId} />
       </section>
     </article>
   );

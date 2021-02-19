@@ -55,22 +55,31 @@ class App extends React.Component {
                   userName={this.state.userLogin.name}
                 />
               </Route>
-              {/* <Route path="/articles" exact>
-                <DisplayArticlesList userLogged={this.state.userLogged}/>
-              </Route> */}
-              <ProtectedRoute
+              <Route path="/articles" exact>
+                <DisplayArticlesList
+                  userLogged={this.state.userLogged}
+                  userLogin={this.state.userLogin}
+                />
+              </Route>
+              {/* <ProtectedRoute
                 path="/articles"
                 exact
                 component={DisplayArticlesList}
                 userLogged={this.state.userLogged}
                 userLogin={this.state.userLogin}
-              />
-              <ProtectedRoute
+              /> */}
+              <Route path="/articles/:articleId" exact>
+                <ArticleItem
+                  userLogged={this.state.userLogged}
+                  userLogin={this.state.userLogin}
+                />
+              </Route>
+              {/* <ProtectedRoute
                 path="/articles/:articleId"
                 component={ArticleItem}
                 userLogged={this.state.userLogged}
                 userLogin={this.state.userLogin}
-              />
+              /> */}
               <ProtectedRoute
                 path="/my-articles"
                 userLogged={this.state.userLogged}
