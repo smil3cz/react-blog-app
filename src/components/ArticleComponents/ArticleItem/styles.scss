@@ -7,7 +7,6 @@
   display: grid;
   gap: 2rem;
   grid-template-columns: 60% 1fr;
-  padding-top: 2rem;
 
   &__header {
     h1 {
@@ -67,6 +66,7 @@
   &__comments {
     margin-top: 2rem;
     margin-bottom: 2rem;
+    padding-bottom: 9rem;
   }
 
   &__form {
