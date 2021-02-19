@@ -81,4 +81,15 @@
       height: 4rem;
     }
   }
+
+  &__offline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      margin: 2rem 0;
+    }
+  }
 }

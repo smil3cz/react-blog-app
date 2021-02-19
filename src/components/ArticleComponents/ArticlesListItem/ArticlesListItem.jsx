@@ -48,15 +48,14 @@ const ArticlesListItem = ({ articleData }) => {
         <section className="article__content">
           <h4 className="article__headline">{articleData.title}</h4>
           <div className="article__details">
-            {/* <p className="article__author">{userLogin.name}</p> */}
             <p className="article__dot">&diams;</p>
             <p className="article__date">{articleDetail && articleTime()}</p>
           </div>
           <div className="article__perex">{articleData.perex}</div>
           <ul className="article__actions">
             <Link
+              to={{ pathname: `/articles/${articleData.articleId}` }}
               className="article__actions-read"
-              to={`/articles/${articleData.articleId}`}
             >
               <li>Read whole article</li>
             </Link>

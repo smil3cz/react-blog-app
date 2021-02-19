@@ -15,25 +15,24 @@ const RelatedArticles = ({ currentId }) => {
     setArticles(response.items);
   };
 
-  const filteredArticles = articles
-    .filter((article) => article.articleId !== currentId)
-    .splice(0, 6);
-
-  const renderRelatedArticles = () => {
-    return filteredArticles.map((article, index) => {
-      if (index === 4) {
-        return;
-      } else {
-        return (
-          <RelatedArticleItem key={article.articleId} articleData={article} />
-        );
-      }
-    });
-  };
-
   if (!currentId || !articles) {
     return <LoadingSpinner />;
   } else {
+    const filteredArticles = articles
+      .filter((article) => article.articleId !== currentId)
+      .splice(0, 6);
+
+    const renderRelatedArticles = () => {
+      return filteredArticles.map((article, index) => {
+        if (index === 4) {
+          return;
+        } else {
+          return (
+            <RelatedArticleItem key={article.articleId} articleData={article} />
+          );
+        }
+      });
+    };
     return (
       <Fragment>
         <header className="related-article__header">

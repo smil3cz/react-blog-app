@@ -34,7 +34,6 @@ const saveNewArticle = async (articleData) => {
 
   try {
     const { data } = await axios.post(apiArticleUrl, articleData, options);
-    console.log(data);
     return data;
   } catch (error) {
     console.log(`Error fetching data - ${error.message}`);
@@ -56,7 +55,6 @@ const getArticleDetail = async (articleId) => {
     return data;
   } catch (error) {
     console.log(error);
-    throw new Error(error);
   }
 };
 
@@ -93,7 +91,6 @@ const addVote = async (commentId) => {
     return data;
   } catch (error) {
     console.log(error);
-    throw new Error(error);
   }
 };
 
@@ -112,7 +109,6 @@ const substractVote = async (commentId) => {
     return data;
   } catch (error) {
     console.log(error);
-    throw new Error(error);
   }
 };
 
@@ -133,7 +129,6 @@ const uploadImage = async (image) => {
     return data;
   } catch (error) {
     console.log(error);
-    throw new Error(error);
   }
 };
 
@@ -154,7 +149,6 @@ const downloadImage = async (imageId) => {
     return url;
   } catch (error) {
     console.log(error);
-    throw new Error(error);
   }
 };
 
