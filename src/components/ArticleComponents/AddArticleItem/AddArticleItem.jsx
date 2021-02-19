@@ -4,7 +4,6 @@ import {
   saveNewArticle,
   getAllArticles,
   uploadImage,
-  downloadImage,
 } from "../../../api/apiArticleHelper.js";
 import FormButton from "../../FormComponents/FormButton/FormButton";
 import FormInput from "../../FormComponents/FormInput/FormInput.jsx";
@@ -32,7 +31,6 @@ const AddArticleItem = () => {
       content: event.target.input.value,
       imageId: imageId.imageId,
     };
-    console.log(articleData);
     await saveNewArticle(articleData);
     await getAllArticles();
     history.push("/articles");
