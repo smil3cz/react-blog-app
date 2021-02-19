@@ -33,7 +33,9 @@ const saveNewArticle = async (articleData) => {
   };
 
   try {
-    await axios.post(apiArticleUrl, articleData, options);
+    const { data } = await axios.post(apiArticleUrl, articleData, options);
+    console.log(data);
+    return data;
   } catch (error) {
     console.log(`Error fetching data - ${error.message}`);
   }
@@ -114,6 +116,48 @@ const substractVote = async (commentId) => {
   }
 };
 
+const uploadImage = async (image) => {
+  const apiImageUrl = `https://fullstack.exercise.applifting.cz/images`;
+  const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+  const options = {
+    method: "POST",
+    headers: {
+      "X-API-KEY": localStorage.getItem("apiKey"),
+      "Content-type": "multipart/form-data",
+      Authorization: accessToken.access_token,
+    },
+  };
+  try {
+    const { data } = await axios.post(apiImageUrl, image, options);
+    console.log("IMAGE UPLOAD API", data);
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new Error(error);
+  }
+};
+
+const downloadImage = async (imageId) => {
+  const apiImageUrl = `https://fullstack.exercise.applifting.cz/images/${imageId}`;
+  const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+  const options = {
+    method: "GET",
+    headers: {
+      "X-API-KEY": localStorage.getItem("apiKey"),
+      Authorization: accessToken.access_token,
+    },
+    responseType: "blob",
+  };
+  try {
+    const { data } = await axios.get(apiImageUrl, options);
+    const url = URL.createObjectURL(data);
+    return url;
+  } catch (error) {
+    console.log(error);
+    throw new Error(error);
+  }
+};
+
 export {
   getAllArticles,
   saveNewArticle,
@@ -121,4 +165,6 @@ export {
   addVote,
   substractVote,
   addNewComment,
+  uploadImage,
+  downloadImage,
 };
