@@ -1,0 +1,32 @@
+@import "../../styles/abstracts/variables";
+
+.admin {
+  width: 100%;
+  max-width: 115.2rem;
+  margin: 0 auto;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    height: 7rem;
+
+    h1 {
+      margin-right: 2rem;
+    }
+  }
+
+  &__table {
+    width: 100%;
+
+    &__table-header {
+      border-bottom: $border-form-inputs;
+    }
+
+    thead th:not(:first-of-type) {
+      text-align: left;
+    }
+    thead th:last-of-type {
+      text-align: center;
+    }
+  }
+}
