@@ -15,10 +15,11 @@ const RelatedArticles = ({ currentId }) => {
     setArticles(response.items);
   };
 
+  const filteredArticles = articles
+    .filter((article) => article.articleId !== currentId)
+    .splice(0, 6);
+
   const renderRelatedArticles = () => {
-    const filteredArticles = articles.filter(
-      (article) => article.articleId !== currentId
-    );
     return filteredArticles.map((article, index) => {
       if (index === 4) {
         return;
