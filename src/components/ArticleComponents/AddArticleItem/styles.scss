@@ -30,11 +30,34 @@
     input {
       width: 30rem;
     }
+
+    input[type="file"] {
+      display: none;
+    }
   }
 
   textarea {
     width: 74rem;
     border: 1px solid #dfdfdf;
     border-radius: 4px;
+  }
+
+  &__file-upload {
+    border: 1px solid #dfdfdf;
+    width: 17rem;
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    height: 3.6rem;
+    text-align: center;
+    line-height: 2.2rem;
+    font-size: 1.6rem;
+    background-color: $btn-secondary;
+    color: $text-white;
+    border-radius: $border-r-4px;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(1.2);
+    }
   }
 }
