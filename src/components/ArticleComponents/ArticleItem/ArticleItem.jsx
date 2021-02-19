@@ -38,16 +38,15 @@ const ArticleItem = (props) => {
   };
 
   const renderComments = () => {
-    if (props.userLogin.name && articleDetail.hasOwnProperty("comments")) {
+    if (articleDetail.hasOwnProperty("comments")) {
       return (
         <ArticleItemComments
           comments={articleDetail.comments}
-          userName={props.userLogin.name}
+          userLogin={props.userLogin}
+          userLogged={props.userLogged}
           currentId={articleId}
         />
       );
-    } else {
-      return <UserOffline />;
     }
   };
 

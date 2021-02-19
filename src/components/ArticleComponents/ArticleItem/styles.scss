@@ -77,7 +77,6 @@
   }
 
   &__avatar {
-    // width: 10rem;
     img {
       width: 4rem;
       height: 4rem;
@@ -89,6 +88,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 2rem;
 
     button {
       margin: 2rem 0;
