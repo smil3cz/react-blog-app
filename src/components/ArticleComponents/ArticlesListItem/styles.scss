@@ -19,9 +19,11 @@
   }
 
   &__image {
-    width: 25rem;
+    
     img {
-      width: 100%;
+      width: 25rem;
+      height: 20rem;
+      object-fit: cover;
     }
   }
   &__content {
