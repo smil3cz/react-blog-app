@@ -125,7 +125,6 @@ const uploadImage = async (image) => {
   };
   try {
     const { data } = await axios.post(apiImageUrl, image, options);
-    console.log("IMAGE UPLOAD API", data);
     return data;
   } catch (error) {
     console.log(error);
