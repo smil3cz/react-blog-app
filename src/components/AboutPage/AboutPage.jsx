@@ -6,7 +6,9 @@ const AboutPage = () => {
       <header className="about__header">
         <h1>About this project</h1>
       </header>
-      <div className="about__content">s</div>
+      <div className="about__content">
+        <p>Small project to practice work with React.JS</p>
+      </div>
     </section>
   );
 };
