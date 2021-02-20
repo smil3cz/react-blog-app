@@ -1,5 +1,6 @@
 import "./styles.scss";
 
+// TODO refactor spinner to central modal
 const LoadingSpinner = () => {
   return (
     <div className="loading-spinner">
