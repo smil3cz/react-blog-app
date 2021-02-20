@@ -10,7 +10,7 @@ class UserForm extends React.Component {
       formWarning: false,
     };
   }
-
+  // Method for changing login form to register form and vice versa
   changeFormType = (e) => {
     const value = e.currentTarget.textContent;
     const parentElement = e.target.parentNode;

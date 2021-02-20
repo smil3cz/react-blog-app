@@ -34,6 +34,7 @@ class App extends React.Component {
     }
     this.setState({
       userLogin: {
+        // Merge data from registration and login to have one object to work with
         ...JSON.parse(localStorage.getItem("userRegistration")),
         ...JSON.parse(localStorage.getItem("accessToken")),
       },
@@ -61,25 +62,12 @@ class App extends React.Component {
                   userLogin={this.state.userLogin}
                 />
               </Route>
-              {/* <ProtectedRoute
-                path="/articles"
-                exact
-                component={DisplayArticlesList}
-                userLogged={this.state.userLogged}
-                userLogin={this.state.userLogin}
-              /> */}
               <Route path="/articles/:articleId" exact>
                 <ArticleItem
                   userLogged={this.state.userLogged}
                   userLogin={this.state.userLogin}
                 />
               </Route>
-              {/* <ProtectedRoute
-                path="/articles/:articleId"
-                component={ArticleItem}
-                userLogged={this.state.userLogged}
-                userLogin={this.state.userLogin}
-              /> */}
               <ProtectedRoute
                 path="/my-articles"
                 userLogged={this.state.userLogged}
